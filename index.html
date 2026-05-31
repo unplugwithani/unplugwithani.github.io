@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ani — Words & The Work</title>
+<meta name="description" content="A 6-week intimate container for creative women ready to dissolve the identity that no longer serves them and step into who they're actually becoming.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F8F4EE;
+  --cream-dark: #EDE7DC;
+  --ink: #1C1914;
+  --ink-mid: #4A4540;
+  --ink-soft: #8A847C;
+  --gold: #B8955A;
+  --gold-light: #D4B07A;
+  --gold-pale: #F2E8D5;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(248, 244, 238, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+
+.nav-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+
+.nav-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.nav-link:hover { color: var(--gold); }
+.nav-link.active { color: var(--gold); }
+
+.nav-cta {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 400;
+  border: 0.5px solid var(--gold);
+  padding: 0.45rem 1rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.nav-cta:hover { background: var(--gold); color: white; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+.hero-text {
+  padding: 6rem 4rem 6rem 5vw;
+}
+
+.hero-image-col {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(20%);
+}
+
+.hero-image-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-style: italic;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.6s forwards;
+}
+
+.hero-detail {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s forwards;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s forwards;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0.8rem 1.8rem;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.25s;
+}
+.btn:hover { background: var(--ink); color: var(--cream); }
+
+.btn-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-gold:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+.btn-filled {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.btn-filled:hover { background: var(--gold); border-color: var(--gold); color: white; }
+
+/* ── SECTIONS ── */
+.section {
+  padding: 6rem 2rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.section-wide {
+  padding: 6rem 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+p {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+/* ── DIVIDERS ── */
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 2.5rem 0;
+}
+
+.section-border { border-top: 0.5px solid var(--cream-dark); }
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  border-left: 1.5px solid var(--gold);
+  padding: 0.5rem 0 0.5rem 1.8rem;
+  margin: 2.5rem 0;
+}
+.pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── FUNNEL STRIP (dark) ── */
+.funnel-strip {
+  background: var(--ink);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.funnel-strip .section-label { color: var(--gold); }
+.funnel-strip .section-title { color: var(--cream); }
+.funnel-strip p { color: rgba(248,244,238,0.7); max-width: 560px; margin: 0 auto 1em; }
+.funnel-strip .gold-line { margin: 2rem auto; }
+
+/* ── FUNNEL QUESTIONS ── */
+.funnel-questions {
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  text-align: left;
+}
+.funnel-q {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  color: rgba(248,244,238,0.85);
+  font-size: 0.95rem;
+}
+.funnel-q:last-child { border-bottom: none; }
+.funnel-q::before {
+  content: '→';
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-top: 0.1em;
+  flex-shrink: 0;
+}
+
+/* ── WEEKS ── */
+.weeks {
+  margin: 2.5rem 0;
+  border: 0.5px solid var(--cream-dark);
+}
+.week-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  border-bottom: 0.5px solid var(--cream-dark);
+  transition: background 0.2s;
+  cursor: default;
+}
+.week-item:last-child { border-bottom: none; }
+.week-item:hover { background: var(--gold-pale); }
+
+.week-num {
+  padding: 1.4rem 1rem;
+  border-right: 0.5px solid var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+.week-content { padding: 1.4rem 1.6rem; }
+.week-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.3em;
+  line-height: 1.3;
+}
+.week-desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* ── FOR YOU LIST ── */
+.for-list {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+.for-list li {
+  padding: 0.75rem 0;
+  padding-left: 1.4rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  position: relative;
+}
+.for-list li:last-child { border-bottom: none; }
+.for-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ── DETAILS STRIP ── */
+.details-strip {
+  background: var(--gold-pale);
+  border-top: 0.5px solid var(--cream-dark);
+  border-bottom: 0.5px solid var(--cream-dark);
+  padding: 3.5rem 2rem;
+}
+.details-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.detail-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.detail-value {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+.detail-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── PIONEER PRICING SECTION ── */
+.pricing-section {
+  background: var(--ink);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.pricing-box {
+  max-width: 520px;
+  margin: 0 auto;
+  border: 0.5px solid rgba(184,149,90,0.4);
+  padding: 3rem 2.5rem;
+  position: relative;
+}
+.pricing-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: white;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  white-space: nowrap;
+}
+.pricing-price {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  margin: 1rem 0 0.3rem;
+}
+.pricing-was {
+  font-size: 0.8rem;
+  color: rgba(248,244,238,0.4);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+.pricing-section .section-label { color: var(--gold); margin-bottom: 0.5rem; }
+.pricing-section p { color: rgba(248,244,238,0.65); max-width: 420px; margin: 0 auto 0.8em; font-size: 0.9rem; }
+.pricing-includes {
+  list-style: none;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+.pricing-includes li {
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  font-size: 0.88rem;
+  color: rgba(248,244,238,0.8);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.pricing-includes li:last-child { border-bottom: none; }
+.pricing-includes li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.5rem; top: 0.7rem; }
+.pricing-note {
+  font-size: 0.72rem;
+  color: rgba(248,244,238,0.35);
+  letter-spacing: 0.06em;
+  margin-top: 1.2rem !important;
+}
+
+/* ── ABOUT DARK ── */
+.about-dark {
+  background: var(--ink);
+  padding: 6rem 2rem;
+}
+.about-dark-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: center;
+}
+.about-dark .section-label { color: var(--gold); }
+.about-dark .section-title { color: var(--cream); }
+.about-dark p { color: rgba(248,244,238,0.7); }
+.about-dark .gold-line { background: var(--gold); }
+.about-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(30%);
+}
+
+/* ── ABOUT PAGE ── */
+.about-hero {
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding-top: 5rem;
+  overflow: hidden;
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+.about-hero-text {
+  padding: 5rem 3rem 5rem 5vw;
+}
+.about-hero-img {
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream-dark);
+}
+.about-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.bio-section {
+  padding: 5rem 2rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--cream-dark);
+  margin: 2.5rem 0;
+}
+.credential {
+  padding: 1.8rem 1.4rem;
+  border-right: 0.5px solid var(--cream-dark);
+  text-align: center;
+}
+.credential:last-child { border-right: none; }
+.credential-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.credential-sub {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  border: 0.5px solid var(--cream-dark);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+.link-card:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-pale);
+}
+.link-icon {
+  font-size: 1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.link-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 0.1rem; }
+.link-name { font-family: var(--serif); font-size: 1rem; }
+
+/* ── FORM SECTION ── */
+.form-section {
+  background: var(--ink);
+  padding: 5rem 2rem;
+}
+.form-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.form-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.form-title em { font-style: italic; color: var(--gold); }
+.form-subtitle {
+  font-size: 0.92rem;
+  color: rgba(248,244,238,0.6);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.form-group { margin-bottom: 1.4rem; }
+.form-group label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248,244,238,0.5);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(255,255,255,0.15);
+  color: var(--cream);
+  padding: 0.9rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(248,244,238,0.25); }
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+
+.submit-btn {
+  width: 100%;
+  background: var(--gold);
+  color: white;
+  border: none;
+  padding: 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover { background: var(--gold-light); }
+.form-note {
+  font-size: 0.72rem;
+  color: rgba(248,244,238,0.3);
+  text-align: center;
+  margin-top: 0.8rem !important;
+  letter-spacing: 0.04em;
+}
+
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.success-msg p {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+/* ── CONTACT PAGE ── */
+.contact-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 2rem 5rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 2rem 0;
+  border: 0.5px solid var(--cream-dark);
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+.social-link:last-child { border-bottom: none; }
+.social-link:hover { background: var(--gold-pale); color: var(--gold); }
+.social-link-left { display: flex; align-items: center; gap: 1rem; }
+.social-platform { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); width: 80px; }
+.social-handle { font-family: var(--serif); font-size: 1.05rem; }
+.social-arrow { color: var(--gold); font-size: 0.9rem; transition: transform 0.2s; }
+.social-link:hover .social-arrow { transform: translateX(4px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+footer p {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(248,244,238,0.35);
+  text-transform: uppercase;
+  margin: 0;
+}
+footer a {
+  color: rgba(248,244,238,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--cream);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    z-index: 99;
+  }
+  .nav-links.open { display: flex; }
+  .nav-link { font-size: 1rem; }
+  .nav-cta { font-size: 0.85rem; padding: 0.8rem 2rem; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image-col { height: 50vw; order: -1; }
+  .hero-image-col::after { background: linear-gradient(to bottom, transparent 60%, var(--cream)); }
+  .hero-text { padding: 3rem 1.5rem 4rem; }
+
+  .about-hero { grid-template-columns: 1fr; min-height: auto; }
+  .about-hero-img { height: 50vw; order: -1; }
+  .about-hero-text { padding: 3rem 1.5rem; }
+
+  .about-dark-inner { grid-template-columns: 1fr; }
+  .about-dark-inner .about-img { display: none; }
+
+  .details-inner { grid-template-columns: repeat(2, 1fr); }
+  .credentials { grid-template-columns: 1fr; }
+  .credential { border-right: none; border-bottom: 0.5px solid var(--cream-dark); }
+  .credential:last-child { border-bottom: none; }
+  .links-grid { grid-template-columns: 1fr; }
+
+  .section { padding: 4rem 1.5rem; }
+  .section-wide { padding: 4rem 1.5rem; }
+  .bio-section { padding: 4rem 1.5rem; }
+  .form-section { padding: 4rem 1.5rem; }
+  .about-dark { padding: 4rem 1.5rem; }
+  .funnel-strip { padding: 4rem 1.5rem; }
+  .pricing-section { padding: 4rem 1.5rem; }
+  nav { padding: 1rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .details-inner { grid-template-columns: 1fr 1fr; }
+  .hero-btns { flex-direction: column; }
+  .hero-btns .btn { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-name" onclick="showPage('home')" style="cursor:pointer;">Ani</a>
+  <div class="nav-links" id="navLinks">
+    <span class="nav-link" onclick="showPage('home'); closeMenu()">Home</span>
+    <span class="nav-link" onclick="showPage('work'); closeMenu()">Words & The Work</span>
+    <span class="nav-link" onclick="showPage('about'); closeMenu()">About</span>
+    <span class="nav-link" onclick="showPage('testimonials'); closeMenu()">Kind Words</span>
+    <a href="https://anisabutt.substack.com" target="_blank" class="nav-link" onclick="closeMenu()">Writing</a>
+    <span class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</span>
+    <span class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Secure your place</span>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">A 6-week container for creative women</p>
+      <h1 class="hero-title">
+        You've been editing yourself<br>
+        for so long,<br>
+        <em>you've forgotten what<br>the unedited version<br>sounds like.</em>
+      </h1>
+      <p class="hero-sub">This is where you remember.</p>
+      <p class="hero-detail">6 women &nbsp;·&nbsp; 6 weeks &nbsp;·&nbsp; Sundays 5pm BST &nbsp;·&nbsp; Starts 28th June 2026</p>
+      <div class="hero-btns">
+        <span class="btn btn-filled" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Secure your place</span>
+        <span class="btn" onclick="showPage('work')">Learn more</span>
+      </div>
+    </div>
+    <div class="hero-image-col">
+      <img src="ANISA2.jpg" alt="Ani">
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">Does any of this sound familiar?</p>
+      <h2 class="section-title">You feel lost.<br>A little alone in it.<br><em>And you can't quite hear<br>your own voice anymore.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>You are doing all the right things. Showing up. Holding it together. From the outside, it looks fine. But underneath something feels off. Like you are going through the motions of your life without quite living it.</p>
+      <p>You know what you want. Sort of. But every time you get close to it, something pulls you back. Self doubt. Overwhelm. That creeping feeling that you are not quite worthy of the things you actually want.</p>
+      <p>You feel alone in this process. Like everyone else has it figured out and you are the only one still circling the same things.</p>
+    </div>
+    <div class="pullquote reveal">
+      <p>This is not a confidence problem. It is not a motivation problem. It is a self trust problem. And it can be rebuilt.</p>
+    </div>
+    <div class="reveal">
+      <p>The version of you that knows what she wants, trusts herself, takes up space without apology. She is still in there. She has just been buried under years of adjusting, managing, editing herself in real time to keep everyone else comfortable.</p>
+      <p>Words and the Work is how you get back to her.</p>
+    </div>
+    <div class="reveal" style="margin-top:2rem;">
+      <span class="btn btn-gold" onclick="showPage('work')">Tell me more →</span>
+    </div>
+  </div>
+
+  <!-- FUNNEL: DOES THIS SOUND LIKE YOU -->
+  <div class="funnel-strip">
+    <div class="section-label reveal">Does this sound like you?</div>
+    <h2 class="section-title reveal" style="color:var(--cream); max-width:520px; margin: 0.5rem auto 1rem;">The women who find their way<br>here usually say one of these.</h2>
+    <div class="gold-line reveal"></div>
+    <div class="funnel-questions">
+      <div class="funnel-q reveal">"I feel lost and I can't explain why. Everything looks fine from the outside."</div>
+      <div class="funnel-q reveal">"I know what I want — but I don't feel worthy of it. Not really."</div>
+      <div class="funnel-q reveal">"I feel alone in this. Like everyone else has figured something out that I haven't."</div>
+      <div class="funnel-q reveal">"I'm overwhelmed. I keep starting things and stopping. I don't trust myself."</div>
+      <div class="funnel-q reveal">"I can't hear my own intuition anymore. I've lost the connection to what I actually think and feel."</div>
+    </div>
+    <div style="margin-top:3rem;" class="reveal">
+      <span class="btn btn-gold" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">This is for me →</span>
+    </div>
+  </div>
+
+  <!-- ABOUT PREVIEW (dark) -->
+  <div class="about-dark">
+    <div class="about-dark-inner">
+      <div>
+        <p class="section-label reveal">About Ani</p>
+        <h2 class="section-title reveal">Actor. Poet. Writer.<br><em>Someone who has done<br>the work herself.</em></h2>
+        <div class="gold-line reveal"></div>
+        <p class="reveal">I spent years learning how to disappear into other people. On stage, on screen. It took me longer to realise I had been doing the same thing off it.</p>
+        <p class="reveal">I'm a published poet, a working actor, and a qualified life coach. I've spent my life studying what it means to be human — what we perform, what we hide, and what it costs us. Words & The Work came from my own undoing — and remaking.</p>
+        <p class="reveal">I hold the space. The writing does the work.</p>
+        <div class="reveal" style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+          <span class="btn btn-gold" onclick="showPage('about')">Read more about me</span>
+          <span class="btn" style="color:rgba(248,244,238,0.6); border-color:rgba(255,255,255,0.2);" onclick="showPage('testimonials')">Kind words</span>
+          <a href="https://anisabutt.substack.com" target="_blank" class="btn" style="color:rgba(248,244,238,0.6); border-color:rgba(255,255,255,0.2);">Read my writing</a>
+        </div>
+      </div>
+      <img src="ANISA2.jpg" alt="Anisa Butt" class="about-img reveal">
+    </div>
+  </div>
+
+  <!-- FREE GUIDES -->
+  <div class="section section-border" style="text-align:center;">
+    <div class="reveal">
+      <p class="section-label">Free for you</p>
+      <h2 class="section-title">Nine guides to help you<br><em>come home to yourself.</em></h2>
+      <p style="max-width:480px; margin: 0 auto 2rem;">Wherever you are right now — overwhelmed, lost, quietly aching for something to shift — these are for you. Download all nine, free.</p>
+      <div style="max-width:600px; margin: 0 auto 2.5rem; text-align:left; border: 0.5px solid var(--cream-dark);">
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Emotional Reset</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Ground yourself when the world feels too loud</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Nervous System Check-In</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">A daily ritual to come back to safety</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Reparenting Reflections</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Meet your inner child with compassion</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Boundaries That Feel Good</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Say yes to peace and no to burnout</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Overthinking Detox</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Get out of your head and into clarity</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Self Worth Affirmations</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Daily words to rewire your inner voice</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Find Yourself Again Map</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Reconnect with the you that got lost</span>
+        </div>
+        <div style="padding:1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Sensitive Soul Survival Kit</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">A calm guide for empaths and HSPs</span>
+        </div>
+        <div style="padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Self Discovery Workbook</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">A full journal to find yourself again</span>
+        </div>
+      </div>
+      <a href="https://unplugwithani.gumroad.com/l/xqmrwy" target="_blank" class="btn btn-gold">Download all nine — free 🤍</a>
+      <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:1rem; letter-spacing:0.06em;">Enter £0 at checkout — it's completely free.</p>
+    </div>
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="section" style="text-align:center; padding: 5rem 2rem;">
+    <div class="reveal">
+      <p class="section-label">Ready?</p>
+      <h2 class="section-title">The founding cohort.<br><em>6 women. Pioneer pricing.</em></h2>
+      <p style="max-width:460px; margin: 0 auto 2rem;">The first round of Words & The Work runs at a founding rate — a price that will not be offered again. 6 places. Starts Sunday 28th June 2026. When they're gone, they're gone.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+        <a href="https://buy.stripe.com/8x27sL6Svfbf9ysgWc4Vy00" target="_blank" class="btn btn-filled">Secure your place — £497</a>
+        <span class="btn" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Have a question first</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: WORDS & THE WORK -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="page-work">
+
+  <!-- HERO -->
+  <div style="padding: 9rem 2rem 5rem; max-width:740px; margin:0 auto; border-bottom: 0.5px solid var(--cream-dark);">
+    <p class="eyebrow" style="opacity:1; animation:none;">A 6-week container for creative women</p>
+    <h1 class="hero-title" style="opacity:1; animation:none; font-size: clamp(2.8rem, 6vw, 4.5rem);">
+      Words<br><em style="color:var(--gold);">&amp; The Work</em>
+    </h1>
+    <p style="font-family:var(--serif); font-size:1.2rem; font-style:italic; color:var(--ink-mid); margin-top:1rem;">
+      90 minutes a week. 6 women. 6 weeks.<br>Sundays at 5pm BST · Starts 28th June 2026.
+    </p>
+  </div>
+
+  <!-- WHAT IT IS -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">What this is</p>
+      <h2 class="section-title">Not a course.<br>Not a workshop.<br><em>A remembering.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Each session we come together as six women and we remember. Not who we are supposed to be. Not the daughter, the sister, the wife, the mother, the colleague. All of that gets left at the door.</p>
+      <p>For 90 minutes every Sunday you are just you. Fully, completely, without apology.</p>
+      <p>We open with a guided visualisation — my voice live, soft music underneath — to take you somewhere underneath the thinking. Where the real answers already live. Then you write. A powerful live journalling practice that surfaces what the analytical mind cannot reach. Then we talk. Coached conversation that moves you, challenges you gently, and witnesses you fully.</p>
+      <p>You leave every session with a recording to return to. And you leave the six weeks with something more valuable than that. A small group of women who have watched you remember your power. Week by week. Together.</p>
+      <p>This is not a course. This is a living, breathing community of women elevating each other back to themselves.</p>
+    </div>
+    <div class="pullquote reveal">
+      <p>This is not about fixing yourself. You were never broken. This is about remembering.</p>
+    </div>
+  </div>
+
+  <!-- SESSION FORMAT STRIP -->
+  <div class="details-strip" style="background: var(--ink); border-color: rgba(255,255,255,0.08);">
+    <div style="max-width:740px; margin:0 auto; text-align:center;">
+      <p class="section-label reveal" style="color:var(--gold);">Every session. Every week.</p>
+      <h2 class="section-title reveal" style="color:var(--cream); margin-bottom:0.5rem;">My voice. Your truth.<br><em style="color:var(--gold);">Six women remembering together.</em></h2>
+      <p class="reveal" style="color:rgba(248,244,238,0.5); font-size:0.78rem; letter-spacing:0.1em; margin-bottom:2rem;">Sundays · 5pm BST · 12pm EDT · 9am PDT · 8pm GST</p>
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem; max-width:600px; margin: 0 auto;" class="reveal">
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">01</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Remember</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">A live guided visualisation. My voice, soft music, eyes closed. We go underneath the noise to where you actually know things.</div>
+        </div>
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">02</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Write</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">A powerful live journalling practice. No editing. No stopping. Whatever surfaces, you write it. This is where breakthroughs happen.</div>
+        </div>
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">03</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Rise</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">Coached group conversation. Six women witnessing each other. Every session recorded. Every week we elevate each other a little further.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE 6 WEEKS -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">The journey</p>
+      <h2 class="section-title">Six weeks.<br><em>One arc.</em></h2>
+      <p>Each week builds on the last. You arrive not knowing where you'll end up. That's the point.</p>
+    </div>
+    <div class="weeks reveal">
+      <div class="week-item">
+        <div class="week-num">01</div>
+        <div class="week-content">
+          <p class="week-name">Permission</p>
+          <p class="week-desc">We begin here: giving yourself full permission to show up without answers, without performance, without editing. A guided meditation opens the space. Then you write. Then we talk. You arrive exactly as you are.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">02</div>
+        <div class="week-content">
+          <p class="week-name">Excavation</p>
+          <p class="week-desc">Who were you before the world got loud? A guided meditation takes you back — beneath the roles, the habits, the identity built for survival. Then you write what surfaces. She's still in there.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">03</div>
+        <div class="week-content">
+          <p class="week-name">Name It</p>
+          <p class="week-desc">The things you've stopped saying. A guided meditation takes you to where your real voice lives in your body. Then you write — without shame — the specific ways you have silenced yourself. In your relationships, your creative life, your own head.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">04</div>
+        <div class="week-content">
+          <p class="week-name">Dissolve</p>
+          <p class="week-desc">The identity that no longer serves you gets examined and gently released. What are you carrying that was never yours? What are you still doing out of habit, fear, or approval-seeking?</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">05</div>
+        <div class="week-content">
+          <p class="week-name">Rewrite</p>
+          <p class="week-desc">This is where it gets electric. You start living the new version — not planning to. Writing your future self, speaking it out loud, being witnessed doing it. The old story loses its grip.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">06</div>
+        <div class="week-content">
+          <p class="week-name">Rebirth</p>
+          <p class="week-desc">You share. We witness. We celebrate. You leave this room knowing who you are, what you want to say, and that you are not alone in becoming her. This is the beginning, not the end.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BY THE END -->
+  <div class="funnel-strip">
+    <p class="section-label reveal">By the end of 6 weeks</p>
+    <h2 class="section-title reveal" style="color:var(--cream); max-width:540px; margin: 0.5rem auto 1rem;">You will leave as someone<br><em style="color:var(--gold);">you recognise.</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="funnel-questions">
+      <div class="funnel-q reveal">You have found your voice again — and are actively using it in your work, your relationships, your creative life</div>
+      <div class="funnel-q reveal">You have shed the version of yourself that was built for other people and are living as who you actually are</div>
+      <div class="funnel-q reveal">You have a creative practice, a clear sense of self, and the courage to be seen in it</div>
+      <div class="funnel-q reveal">You are part of a small, honest community of women who have witnessed your becoming — and you theirs</div>
+    </div>
+  </div>
+
+  <!-- IS THIS FOR YOU -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">Is this for you?</p>
+      <h2 class="section-title">This is for the woman<br><em>who has been very quiet<br>for a very long time.</em></h2>
+    </div>
+    <ul class="for-list">
+      <li class="reveal">You feel lost and a little alone in it — even when life looks fine from the outside</li>
+      <li class="reveal">You struggle to feel worthy of the things you actually want</li>
+      <li class="reveal">You are overwhelmed and can't quite hear your own intuition anymore</li>
+      <li class="reveal">You don't fully trust yourself — you keep second guessing, stopping, starting over</li>
+      <li class="reveal">You know something needs to shift but you can't think your way to what it is</li>
+      <li class="reveal">You don't think of yourself as a writer. You just need to be willing to be honest.</li>
+    </ul>
+    <div class="pullquote reveal">
+      <p>You do not need to have it figured out. You just need 90 minutes a week, a small group of women who get it, and someone to hold the space while you find your way back.</p>
+    </div>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="details-strip">
+    <div class="details-inner">
+      <div class="detail-item reveal">
+        <span class="detail-value">6</span>
+        <span class="detail-label">Women maximum</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value">6</span>
+        <span class="detail-label">Weeks together</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value">90</span>
+        <span class="detail-label">Minutes per session</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value" style="font-size:1.6rem;">28 Jun</span>
+        <span class="detail-label">2026 · 5pm BST</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing-section">
+    <p class="section-label reveal" style="color:var(--gold);">Pioneer pricing</p>
+    <div class="pricing-box reveal">
+      <div class="pricing-badge">Founding cohort only</div>
+      <p style="color:rgba(248,244,238,0.5); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0; margin-top:0.5rem;">Investment</p>
+      <div class="pricing-price">£497</div>
+      <p class="pricing-was">Full price from cohort 2: £597</p>
+      <ul class="pricing-includes">
+        <li>6 × 90-minute live sessions with Ani</li>
+        <li>A group of 6 women maximum</li>
+        <li>Writing prompts and materials each week</li>
+        <li>Access to session recordings</li>
+        <li>Your voice, reclaimed</li>
+      </ul>
+      <a href="https://buy.stripe.com/8x27sL6Svfbf9ysgWc4Vy00" target="_blank" class="btn btn-gold" style="display:block; text-align:center;">Secure your place — £497 →</a>
+      <p class="pricing-note">Pioneer pricing is reserved for the founding cohort only. This price will not be offered again. Payment is processed securely via Stripe.</p>
+    </div>
+  </div>
+
+  <!-- WAITLIST FORM -->
+  <div class="form-section" id="waitlist">
+    <div class="form-inner">
+      <p class="section-label" style="color:var(--gold);">Not quite ready to jump in?</p>
+      <h2 class="form-title">Let's talk.<br><em>I read every message personally.</em></h2>
+      <p class="form-subtitle">Tell me where you are right now. If Words and the Work feels like it might be for you but you have questions — reach out. Ani reads and responds to every single one.</p>
+
+      <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitForm(event)">
+        <input type="hidden" name="form-name" value="waitlist">
+        <p hidden><input name="bot-field"></p>
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" name="name" placeholder="How you like to be called" required>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>What are you carrying right now?</label>
+          <textarea name="carrying" placeholder="Whatever feels true..." rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>What would shift if you trusted your own voice more?</label>
+          <textarea name="shift" placeholder="Take your time..." rows="3"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send me a message →</button>
+        <p class="form-note">Ani responds personally. No spam, ever.</p>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <p>Message received.<br><em>Ani will be in touch personally.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: ABOUT -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <div class="about-hero">
+    <div class="about-hero-text">
+      <p class="eyebrow" style="opacity:1; animation:none;">About</p>
+      <h1 class="hero-title" style="opacity:1; animation:none; font-size:clamp(2.4rem, 5vw, 3.8rem);">
+        I'm Ani.<br>
+        <em>Actor. Poet.<br>Writer.<br>The person you talk to<br>when you're ready to be honest.</em>
+      </h1>
+    </div>
+    <div class="about-hero-img">
+      <img src="data:image/jpeg;base64,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" alt="Anisa Butt">
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div class="bio-section">
+    <div class="reveal">
+      <p class="section-label">The story</p>
+    </div>
+    <div class="reveal">
+      <p>I've spent my life in the study of being human. On stage, on screen, on the page, and in the room with people who are trying to figure out who they are.</p>
+      <p>I trained as an actor, which taught me how to disappear into other people with extraordinary precision. In theatre and in film. It took me years to understand I had been doing the same thing off set and off stage. Performing a version of myself that worked, that was legible, that kept everyone comfortable. Until it didn't work anymore.</p>
+      <p>The process of dismantling that — of asking who I actually was beneath the performance — is what became Words & The Work.</p>
+    </div>
+
+    <div class="pullquote reveal">
+      <p>I know what it is to be articulate about everyone else's experience and completely mute about your own.</p>
+    </div>
+
+    <div class="reveal">
+      <p>I started <em>Unplug With Ani</em> as a podcast — conversations with entrepreneurs and creatives about their journeys. Over time, I realised the most important conversation I needed to be having was the inward one. The podcast became a space for that. This container is the live version.</p>
+      <p>I'm a published poet, my debut collection <em>HOPE</em> is available on Amazon. I'm a working actor in theatre and film. I'm a qualified life coach. But more than any of that: I am someone who has done the messy, necessary, joyful work of figuring out who she actually is and I want to hold that space for you.</p>
+    </div>
+
+    <div class="credentials reveal">
+      <div class="credential">
+        <span class="credential-title">Actor</span>
+        <span class="credential-sub">Stage & screen</span>
+      </div>
+      <div class="credential">
+        <span class="credential-title">Published Poet</span>
+        <span class="credential-sub">HOPE (Amazon)</span>
+      </div>
+      <div class="credential">
+        <span class="credential-title">Life Coach</span>
+        <span class="credential-sub">Qualified practitioner</span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="section-label">Find me</p>
+      <div class="links-grid">
+        <a href="https://anisabutt.substack.com" target="_blank" class="link-card">
+          <span class="link-icon">✍</span>
+          <div>
+            <span class="link-label">Writing</span>
+            <span class="link-name">Unplug With Ani — Substack</span>
+          </div>
+        </a>
+        <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank" class="link-card">
+          <span class="link-icon">🎙</span>
+          <div>
+            <span class="link-label">Podcast</span>
+            <span class="link-name">Unplug With Ani — Spotify</span>
+          </div>
+        </a>
+        <a href="https://open.spotify.com/artist/7ujEkEre5Tctq3twa669cI" target="_blank" class="link-card">
+          <span class="link-icon">🎤</span>
+          <div>
+            <span class="link-label">Spoken Word</span>
+            <span class="link-name">Anisa Butt — Spotify Artist</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/anisaaniiam" target="_blank" class="link-card">
+          <span class="link-icon">◎</span>
+          <div>
+            <span class="link-label">Personal</span>
+            <span class="link-name">@anisaaniiam</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/unplugwithani" target="_blank" class="link-card">
+          <span class="link-icon">◎</span>
+          <div>
+            <span class="link-label">The Work</span>
+            <span class="link-name">@unplugwithani</span>
+          </div>
+        </a>
+        <a href="https://www.amazon.co.uk/HOPE-Anisa-Butt/dp/B096TN7ZHC" target="_blank" class="link-card">
+          <span class="link-icon">📖</span>
+          <div>
+            <span class="link-label">Poetry book</span>
+            <span class="link-name">HOPE — Anisa Butt</span>
+          </div>
+        </a>
+        <a href="mailto:unplugwithani@gmail.com" class="link-card">
+          <span class="link-icon">✉</span>
+          <div>
+            <span class="link-label">Email</span>
+            <span class="link-name">unplugwithani@gmail.com</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="https://buy.stripe.com/8x27sL6Svfbf9ysgWc4Vy00" target="_blank" class="btn btn-filled">Secure your place — £497</a>
+      <span class="btn btn-gold" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Have a question first</span>
+    </div>
+  </div>
+
+  <!-- SECOND PHOTO -->
+  <div style="max-width:100%; overflow:hidden; height: 50vh; border-top: 0.5px solid var(--cream-dark);">
+    <img src="ANISABUTT.jpg" alt="Anisa Butt" style="width:100%; height:100%; object-fit:cover; object-position: center 30%;">
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: CONTACT -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+
+  <div class="contact-hero">
+    <div class="reveal">
+      <p class="section-label">Get in touch</p>
+      <h1 class="section-title" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">
+        Want to talk?<br><em>I'd love to hear from you.</em>
+      </h1>
+    </div>
+    <div class="gold-line reveal"></div>
+    <p class="reveal">Whether you have a question about Words & The Work, want to collaborate, or just want to say hello — reach out. I read everything myself.</p>
+
+    <div class="social-links reveal" style="margin-top: 2.5rem;">
+      <a href="mailto:unplugwithani@gmail.com" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Email</span>
+          <span class="social-handle">unplugwithani@gmail.com</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://anisabutt.substack.com" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Writing</span>
+          <span class="social-handle">Unplug With Ani — Substack</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Podcast</span>
+          <span class="social-handle">Unplug With Ani — Spotify</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://open.spotify.com/artist/7ujEkEre5Tctq3twa669cI" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Spoken Word</span>
+          <span class="social-handle">Anisa Butt — Spotify Artist</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/anisaaniiam" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Personal IG</span>
+          <span class="social-handle">@anisaaniiam</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://www.instagram.com/unplugwithani" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">The Work</span>
+          <span class="social-handle">@unplugwithani</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+      <a href="https://www.amazon.co.uk/HOPE-Anisa-Butt/dp/B096TN7ZHC" target="_blank" class="social-link">
+        <div class="social-link-left">
+          <span class="social-platform">Book</span>
+          <span class="social-handle">HOPE — Poetry by Anisa Butt</span>
+        </div>
+        <span class="social-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="reveal" style="margin-top:3rem;">
+      <span class="btn btn-filled" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Join the waitlist for Words & The Work</span>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: TESTIMONIALS -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="page-testimonials">
+
+  <div style="padding: 9rem 2rem 3rem; max-width:740px; margin:0 auto; border-bottom: 0.5px solid var(--cream-dark);">
+    <p class="eyebrow" style="opacity:1; animation:none;">Kind Words</p>
+    <h1 class="hero-title" style="opacity:1; animation:none; font-size:clamp(2.4rem, 5vw, 3.8rem);">
+      What people say<br><em>after working with Ani.</em>
+    </h1>
+    <p style="font-family:var(--serif); font-size:1.1rem; font-style:italic; color:var(--ink-mid); margin-top:1rem;">From coaching, facilitation, poetry workshops and speaking.</p>
+  </div>
+
+  <!-- TESTIMONIALS GRID -->
+  <div style="max-width:740px; margin:0 auto; padding: 4rem 2rem;">
+
+    <!-- T1 - Big coaching testimonial -->
+    <div class="reveal" style="margin-bottom:3rem; padding:2.5rem; border: 0.5px solid var(--cream-dark); background:var(--gold-pale);">
+      <p style="font-family:var(--serif); font-size:1.15rem; line-height:1.7; color:var(--ink); margin-bottom:1.5rem;">"Working with Anisa has been one of the most transformative experiences of my life. When I first reached out, I was still battling painful thoughts from my divorce, dealing with long-standing weight issues, and confronting deep generational trauma I had barely begun to understand. I felt overwhelmed and disconnected from myself.</p>
+      <p style="font-family:var(--serif); font-size:1.15rem; line-height:1.7; color:var(--ink); margin-bottom:1.5rem;">From our very first session, Anisa created a safe, compassionate space where I felt truly seen and heard. With her support, I began to heal — not just from the heartbreak of my divorce, but from patterns and beliefs that had held me back for years.</p>
+      <p style="font-family:var(--serif); font-size:1.15rem; line-height:1.7; color:var(--ink); margin-bottom:1.5rem;">Our work together empowered me to reclaim my body with kindness and self-respect, to break cycles I once thought were unchangeable, and to show up for myself in ways I never thought possible. I am endlessly grateful and wholeheartedly recommend her to anyone looking for real, lasting change."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Sana — Coaching client</p>
+    </div>
+
+    <!-- T2 - Poetry workshop -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"We had a magical and creative poetry workshop facilitated by Anisa. She made us all feel right at home. Grounded. Inspired. She had a mix of prompts, examples, and movement, and it all really worked and flowed. She's a fantastic facilitator and even better human. I got so clear on the person I want next to me and the person I'd like to be — that a few weeks later, I actually found my person. Dare I say she changed my life?"</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Tonina — Workshop participant</p>
+    </div>
+
+    <!-- PHOTO 1 - Vocals & Verses -->
+    <div class="reveal" style="margin-bottom:2rem;">
+      <img src="ANISA3.jpg" alt="Ani performing spoken word at Vocals & Verses" style="width:100%; height:380px; object-fit:cover; object-position:center top; filter:grayscale(15%);">
+      <p style="font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-top:0.6rem; margin-bottom:0;">Vocals & Verses — Spoken Word Showcase</p>
+    </div>
+
+    <!-- T3 - Book testimonial -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"I have been thinking about writing a book for a while now, and it was only when Anisa facilitated a session that I felt I was capable of doing this. With her simple prompts and clear guidance, she encouraged me not only to write the first paragraph and the outline of the book but also to write my first poem ever. I'm so grateful for her time and energy, and I highly recommend her to anyone who feels stuck."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Amy — Workshop participant</p>
+    </div>
+
+    <!-- T4 - Ease and openness -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"I was extremely comfortable doing the session with her, which made me feel at ease, and I was able to open up effortlessly."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">1:1 Coaching client</p>
+    </div>
+
+    <!-- T5 - DEI / Speaking -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem; border: 0.5px solid var(--cream-dark); background:var(--gold-pale);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"Anisa is a highly creative person and performed powerful pieces on racism and mental wellbeing for our company, supporting our workplace conversations on diversity and inclusion. She prodded us to challenge ourselves — our preconceptions, our attitudes — and encouraged us to hold open and meaningful conversations. We were wowed by her performance, so much so that we asked her to speak at the Institute of Water EDI Conference a year later, where she wowed the audience again."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Abu Rashid, MOSL</p>
+    </div>
+
+    <!-- T6 - DEI Director -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"It was a pleasure working with Anisa. She was professional, timely, and brought a captivating presence to our DEI event. Her thought-provoking poetry deeply resonated with the audience, and she was wonderfully flexible in aligning with our theme."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Corina Pascal, Director</p>
+    </div>
+
+    <!-- T7 - Natural approach -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"As someone who thought they were in tune with themselves, I took a step back and realised I needed some extra support. Ani was that person for me. Her natural approach was not only refreshing but enlightening. Highly recommend her tools for wellbeing."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">1:1 Coaching client</p>
+    </div>
+
+    <!-- T8 - Glenn -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem; border: 0.5px solid var(--cream-dark); background:var(--gold-pale);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"The visualisation exercises were wonderful and the guidance was kept at a beautiful pace — nothing felt rushed. I was able to reconnect with some of my old wounds and sorrow, and it was wonderful to be able to give them some needed attention. The dynamic between connecting to our inner child and then following with a connection to our inner grown self was lovely.</p>
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">My personal reflection afterwards was one of much gratefulness for my own growth journey — as a few years back I would not have been able to be so vulnerable in a setting with people. And I'm a really emotional man. The open space at the end was magical and playful. Once again thank you. Hope to see you in the future."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Glenn — Workshop participant</p>
+    </div>
+
+    <!-- PHOTO 3 - UnderOne Conference -->
+    <div class="reveal" style="margin-bottom:2rem;">
+      <img src="ANISA5.jpg" alt="Ani speaking at UnderOne conference" style="width:100%; height:420px; object-fit:cover; object-position:center 30%; filter:grayscale(15%);">
+      <p style="font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-top:0.6rem; margin-bottom:0;">UnderOne — Uniting Diversity, Igniting Change</p>
+    </div>
+
+    <!-- T9 - Molly -->
+    <div class="reveal" style="margin-bottom:2rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"I just wanted to express how beautiful your workshop was. I had such an incredible time and unlocked parts of my higher self I didn't know were there. I also loved that we had a moment to speak so openly where I got to declare the important things that are on my heart. Thank you so much for creating such a safe and gorgeous space."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Molly — Facilitation</p>
+    </div>
+
+    <!-- T10 - Beautiful evening -->
+    <div class="reveal" style="margin-bottom:3rem; padding:2rem 2rem 2rem 2.5rem; border-left: 2px solid var(--gold);">
+      <p style="font-family:var(--serif); font-size:1.1rem; line-height:1.7; color:var(--ink); margin-bottom:1rem;">"Thank you, Anisa, for a beautiful evening. Your poetry was lovely, and the way you guided us to move, reflect, and write our feelings made the experience so warm and memorable."</p>
+      <p style="font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Facilitation</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal" style="text-align:center; padding:3rem 0;">
+      <p class="section-label">Ready to experience this yourself?</p>
+      <h2 class="section-title">Words & The Work.<br><em>28th June 2026. 6 spots.</em></h2>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:2rem;">
+        <a href="https://buy.stripe.com/8x27sL6Svfbf9ysgWc4Vy00" target="_blank" class="btn btn-filled">Secure your place — £497</a>
+        <span class="btn btn-gold" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Have a question first</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/artist/7ujEkEre5Tctq3twa669cI" target="_blank">Spoken Word</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+
+<script>
+// ── PAGE ROUTING ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  window.scrollTo(0, 0);
+  initReveal();
+}
+
+// ── MENU ──
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+// ── SCROLL REVEAL ──
+function initReveal() {
+  setTimeout(() => {
+    const reveals = document.querySelectorAll('.page.active .reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }, 50);
+}
+
+// ── FORM ──
+function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('waitlistForm');
+  const data = new FormData(form);
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  })
+  .then(() => {
+    form.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  })
+  .catch(() => {
+    form.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+}
+
+// ── INIT ──
+initReveal();
+</script>
+</body>
+</html>
