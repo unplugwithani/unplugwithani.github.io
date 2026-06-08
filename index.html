@@ -824,9 +824,9 @@ footer a:hover { color: var(--gold); }
   <a class="nav-name" onclick="showPage('home')" style="cursor:pointer;">Ani</a>
   <div class="nav-links" id="navLinks">
     <span class="nav-link" onclick="showPage('home'); closeMenu()">Home</span>
+    <span class="nav-link" onclick="showPage('about'); closeMenu()">About</span>
     <span class="nav-link" onclick="showPage('work'); closeMenu()">Words & The Work</span>
     <span class="nav-link" onclick="showPage('onetoone'); closeMenu()">1-1 Work</span>
-    <span class="nav-link" onclick="showPage('about'); closeMenu()">About</span>
     <span class="nav-link" onclick="showPage('testimonials'); closeMenu()">What others say</span>
     <a href="https://anisabutt.substack.com" target="_blank" class="nav-link" onclick="closeMenu()">Writing</a>
     <span class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</span>
@@ -1199,9 +1199,8 @@ footer a:hover { color: var(--gold); }
       <h2 class="form-title">Let's talk.<br><em>I read every message personally.</em></h2>
       <p class="form-subtitle">Tell me where you are right now. If Words and the Work feels like it might be for you but you have questions — reach out. Ani reads and responds to every single one.</p>
 
-      <form id="waitlistForm" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitForm(event)">
-        <input type="hidden" name="form-name" value="waitlist">
-        <p hidden><input name="bot-field"></p>
+      <form id="waitlistForm" action="https://formspree.io/f/xpqedpdb" method="POST" onsubmit="submitForm(event)">
+        <input type="hidden" name="form-name" value="Words & The Work Enquiry">
         <div class="form-group">
           <label>Your name</label>
           <input type="text" name="name" placeholder="How you like to be called" required>
@@ -1684,8 +1683,8 @@ footer a:hover { color: var(--gold); }
       <h2 class="form-title">Apply to work<br><em>together.</em></h2>
       <p class="form-subtitle">Tell me a little about where you are and what you are carrying. I read every application personally and will be in touch if it feels like a fit.</p>
 
-      <form name="onetoone" method="POST" data-netlify="true" onsubmit="submitOneToOne(event)">
-        <input type="hidden" name="form-name" value="onetoone">
+      <form id="onetooneForm" action="https://formspree.io/f/xpqedpdb" method="POST" onsubmit="submitOneToOne(event)">
+        <input type="hidden" name="form-name" value="1-1 Work Application">
         <div class="form-group">
           <label>Your name</label>
           <input type="text" name="name" placeholder="How you like to be called" required>
@@ -1766,14 +1765,16 @@ function submitForm(e) {
   e.preventDefault();
   const form = document.getElementById('waitlistForm');
   const data = new FormData(form);
-  fetch('/', {
+  fetch('https://formspree.io/f/xpqedpdb', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString()
+    body: data,
+    headers: { 'Accept': 'application/json' }
   })
-  .then(() => {
-    form.style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+  .then(response => {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }
   })
   .catch(() => {
     form.style.display = 'none';
@@ -1781,19 +1782,20 @@ function submitForm(e) {
   });
 }
 
-// ── FORM 1-1 ──
 function submitOneToOne(e) {
   e.preventDefault();
-  const form = e.target;
+  const form = document.getElementById('onetooneForm');
   const data = new FormData(form);
-  fetch('/', {
+  fetch('https://formspree.io/f/xpqedpdb', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString()
+    body: data,
+    headers: { 'Accept': 'application/json' }
   })
-  .then(() => {
-    form.style.display = 'none';
-    document.getElementById('onetoonSuccess').style.display = 'block';
+  .then(response => {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('onetoonSuccess').style.display = 'block';
+    }
   })
   .catch(() => {
     form.style.display = 'none';
