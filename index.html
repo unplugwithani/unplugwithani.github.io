@@ -39,7 +39,7 @@ body {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 200;
+  z-index: 100;
   padding: 1.2rem 2.5rem;
   display: flex;
   justify-content: space-between;
@@ -74,6 +74,9 @@ nav {
   padding: 0;
   font-family: var(--sans);
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .nav-link:hover { color: var(--gold); }
@@ -104,8 +107,10 @@ nav {
   background: none;
   border: none;
   padding: 4px;
-  position: relative;
-  z-index: 201;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .hamburger span {
   display: block;
@@ -786,21 +791,10 @@ footer a:hover { color: var(--gold); }
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
-    z-index: 200;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    z-index: 150;
   }
   .nav-links.open { display: flex; }
-  .nav-link { 
-    font-size: 1rem; 
-    padding: 0.5rem 1rem;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    touch-action: manipulation;
-    cursor: pointer;
-  }
+  .nav-link { font-size: 1rem; }
   .nav-cta { font-size: 0.85rem; padding: 0.8rem 2rem; }
 
   .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -853,7 +847,7 @@ footer a:hover { color: var(--gold); }
     <button class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</button>
     <button class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</button>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:151;">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -1810,12 +1804,33 @@ function showPage(name) {
 function toggleMenu() {
   var nav = document.getElementById('navLinks');
   nav.classList.toggle('open');
-  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
-  document.body.style.overflow = '';
 }
+
+// Universal iOS + Android touch fix
+document.addEventListener('DOMContentLoaded', function() {
+  var hamburger = document.getElementById('hamburger');
+  if (hamburger) {
+    ['click', 'touchend'].forEach(function(evt) {
+      hamburger.addEventListener(evt, function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      }, false);
+    });
+  }
+
+  // Close menu when tapping outside
+  document.addEventListener('touchend', function(e) {
+    var nav = document.getElementById('navLinks');
+    var hamburger = document.getElementById('hamburger');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMenu();
+    }
+  }, false);
+});
 
 // ── SCROLL REVEAL ──
 function initReveal() {
