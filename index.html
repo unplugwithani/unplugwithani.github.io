@@ -39,7 +39,7 @@ body {
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   padding: 1.2rem 2.5rem;
   display: flex;
   justify-content: space-between;
@@ -104,6 +104,8 @@ nav {
   background: none;
   border: none;
   padding: 4px;
+  position: relative;
+  z-index: 201;
 }
 .hamburger span {
   display: block;
@@ -784,10 +786,21 @@ footer a:hover { color: var(--gold); }
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
-    z-index: 99;
+    z-index: 200;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .nav-links.open { display: flex; }
-  .nav-link { font-size: 1rem; }
+  .nav-link { 
+    font-size: 1rem; 
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    cursor: pointer;
+  }
   .nav-cta { font-size: 0.85rem; padding: 0.8rem 2rem; }
 
   .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -1795,10 +1808,13 @@ function showPage(name) {
 
 // ── MENU ──
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
+  var nav = document.getElementById('navLinks');
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
 }
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ── SCROLL REVEAL ──
