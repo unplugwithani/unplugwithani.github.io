@@ -829,15 +829,14 @@ footer a:hover { color: var(--gold); }
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-name" onclick="showPage('home')" style="cursor:pointer;">Ani</a>
+  <a class="nav-name" onclick="showPage('about')" style="cursor:pointer;">Ani</a>
   <div class="nav-links" id="navLinks">
-    <span class="nav-link" onclick="showPage('home'); closeMenu()">Home</span>
     <button class="nav-link" onclick="showPage('about'); closeMenu()">About</button>
+    <a class="nav-link" href="/30days" onclick="closeMenu()">30 Days to Unstuck</a>
     <button class="nav-link" onclick="showPage('work'); closeMenu()">Words &amp; The Work</button>
     <button class="nav-link" onclick="showPage('onetoone'); closeMenu()">1-1 Work</button>
     <button class="nav-link" onclick="showPage('testimonials'); closeMenu()">What others say</button>
     <a href="https://anisabutt.substack.com" target="_blank" class="nav-link" onclick="closeMenu()">Writing</a>
-    <a class="nav-link" href="/30days" onclick="closeMenu()">30 Days to Unstuck</a>
     <button class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</button>
     <button class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</button>
   </div>
@@ -845,120 +844,6 @@ footer a:hover { color: var(--gold); }
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<!-- ════════════════════════════════════════ -->
-<!-- PAGE: HOME -->
-<!-- ════════════════════════════════════════ -->
-<div class="page active" id="page-home">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">A 6-week container for women ready to come home to themselves</p>
-      <h1 class="hero-title">
-        You've been editing yourself<br>
-        for so long,<br>
-        <em>you've forgotten what<br>the unedited version<br>sounds like.</em>
-      </h1>
-      <p class="hero-sub">This is where you remember.</p>
-      <p class="hero-detail">6 women &nbsp;·&nbsp; 6 weeks &nbsp;·&nbsp; Sundays 5pm BST &nbsp;·&nbsp; Next cohort date coming soon</p>
-      <div class="hero-btns">
-        <span class="btn btn-filled" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</span>
-        <span class="btn" onclick="showPage('work')">Learn more</span>
-      </div>
-    </div>
-    <div class="hero-image-col">
-      <img src="ANISA2.jpg.jpg" alt="Ani">
-    </div>
-  </div>
-
-  <!-- THE PROBLEM -->
-  <div class="section section-border">
-    <div class="reveal">
-      <p class="section-label">Does any of this sound familiar?</p>
-      <h2 class="section-title">You feel lost.<br>Uncertain of your next step.<br><em>And you can't quite hear<br>your own voice anymore.</em></h2>
-    </div>
-    <div class="reveal">
-      <p>You are doing all the right things. Showing up. Holding it together. From the outside, it looks fine. But underneath something feels off. Like you are going through the motions of your life without quite living it.</p>
-      <p>You know what you want. Sort of. But every time you get close to it, something pulls you back. Self doubt. Overwhelm. That creeping feeling that you are not quite worthy of the things you actually want.</p>
-      <p>You feel alone in this process. Like everyone else has it figured out and you are the only one still circling the same things.</p>
-    </div>
-    <div class="pullquote reveal">
-      <p>This is not a confidence problem. It is not a motivation problem. It is a self trust problem. And it can be rebuilt.</p>
-    </div>
-    <div class="reveal">
-      <p>The version of you that knows what she wants, trusts herself, takes up space without apology. She is still in there. She has just been buried under years of adjusting, managing, editing herself in real time to keep everyone else comfortable.</p>
-      <p>Words and the Work is how you get back to her.</p>
-    </div>
-    <div class="reveal" style="margin-top:2rem;">
-      <span class="btn btn-gold" onclick="showPage('work')">Tell me more →</span>
-    </div>
-  </div>
-
-  <!-- FUNNEL: DOES THIS SOUND LIKE YOU -->
-  <div class="funnel-strip">
-    <div class="section-label reveal">Does this sound like you?</div>
-    <h2 class="section-title reveal" style="color:var(--cream); max-width:520px; margin: 0.5rem auto 1rem;">The women who find their way<br>here usually say one of these.</h2>
-    <div class="gold-line reveal"></div>
-    <div class="funnel-questions">
-      <div class="funnel-q reveal">"I feel lost and I can't explain why. Everything looks fine from the outside."</div>
-      <div class="funnel-q reveal">"I know what I want — but I don't feel worthy of it. Not really."</div>
-      <div class="funnel-q reveal">"I feel alone in this. Like everyone else has figured something out that I haven't."</div>
-      <div class="funnel-q reveal">"I'm overwhelmed. I keep starting things and stopping. I don't trust myself."</div>
-      <div class="funnel-q reveal">"I can't hear my own intuition anymore. I've lost the connection to what I actually think and feel."</div>
-    </div>
-    <div style="margin-top:3rem;" class="reveal">
-      <span class="btn btn-gold" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">This is for me →</span>
-    </div>
-  </div>
-
-  <!-- ABOUT PREVIEW (dark) -->
-  <div class="about-dark">
-    <div class="about-dark-inner">
-      <div>
-        <p class="section-label reveal">About Ani</p>
-        <h2 class="section-title reveal">Actor. Poet. Writer.<br><em>Someone who knows what it costs<br>to perform a version of yourself<br>that isn't really you.</em></h2>
-        <div class="gold-line reveal"></div>
-        <p class="reveal">I spent years learning how to disappear into other people. On stage, on screen. It took me longer to realise I had been doing the same thing off it.</p>
-        <p class="reveal">I'm a published poet, a working actor, and a qualified life coach. I've spent my life studying what it means to be human — what we perform, what we hide, and what it costs us. Words & The Work came from my own undoing — and remaking.</p>
-        <p class="reveal">I hold the space. The writing does the work.</p>
-        <div class="reveal" style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
-          <span class="btn btn-gold" onclick="showPage('about')">Read more about me</span>
-          <span class="btn" style="color:rgba(248,244,238,0.6); border-color:rgba(255,255,255,0.2);" onclick="showPage('testimonials')">What others say</span>
-          <a href="https://anisabutt.substack.com" target="_blank" class="btn" style="color:rgba(248,244,238,0.6); border-color:rgba(255,255,255,0.2);">Read my writing</a>
-        </div>
-      </div>
-      <img src="ANISA2.jpg.jpg" alt="Anisa Butt" class="about-img reveal">
-    </div>
-  </div>
-
-
-  <!-- CTA STRIP -->
-  <div class="section" style="text-align:center; padding: 5rem 2rem;">
-    <div class="reveal">
-      <p class="section-label">Coming soon</p>
-      <h2 class="section-title">The next cohort.<br><em>Register your interest now.</em></h2>
-      <p style="max-width:460px; margin: 0 auto 2rem;">The next cohort date is being confirmed. Register below and you will hear first when doors open.</p>
-      <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
-        <span class="btn btn-filled" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Register my interest</span>
-        <span class="btn" onclick="showPage('work')">Learn more</span>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>
-      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
-      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
-      &nbsp;·&nbsp;
-      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
-      &nbsp;·&nbsp;
-      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
-      &nbsp;·&nbsp;
-      thisisani.com
-    </p>
-  </footer>
-</div>
 
 <!-- ════════════════════════════════════════ -->
 <!-- PAGE: WORDS & THE WORK -->
@@ -1246,7 +1131,7 @@ footer a:hover { color: var(--gold); }
 <!-- ════════════════════════════════════════ -->
 <!-- PAGE: ABOUT -->
 <!-- ════════════════════════════════════════ -->
-<div class="page" id="page-about">
+<div class="page active" id="page-about">
 
   <div class="about-hero">
     <div class="about-hero-text">
