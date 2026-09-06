@@ -788,15 +788,18 @@ footer a:hover { color: var(--gold); }
   .nav-links {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 62px;
+    left: 0;
+    right: 0;
     background: var(--cream);
     flex-direction: column;
-    justify-content: flex-start;
     align-items: stretch;
-    z-index: 150;
+    z-index: 200;
+    border-bottom: 1px solid var(--cream-dark);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    max-height: calc(100vh - 62px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-top: 70px;
   }
   .nav-links.open { display: flex; }
   .nav-links button.nav-link,
