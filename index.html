@@ -789,22 +789,27 @@ footer a:hover { color: var(--gold); }
     background: var(--cream);
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    gap: 0;
+    align-items: stretch;
     z-index: 150;
-    overflow-y: auto;
-    padding-top: 80px;
-    padding-bottom: 2rem;
-  }
-  .nav-links.open > * {
-    padding: 1rem 2rem;
-    width: 100%;
-    text-align: center;
-    border-bottom: 0.5px solid var(--cream-dark);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 60px;
   }
   .nav-links.open { display: flex; }
-  .nav-link { font-size: 1rem; }
-  .nav-cta { font-size: 0.85rem; padding: 0.8rem 2rem; }
+  .nav-links button.nav-link,
+  .nav-links a.nav-link,
+  .nav-links .nav-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 0.5px solid var(--cream-dark);
+    font-size: 0.9rem !important;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
 
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-image-col { height: 50vw; order: -1; }
@@ -839,6 +844,163 @@ footer a:hover { color: var(--gold); }
   .hero-btns { flex-direction: column; }
   .hero-btns .btn { text-align: center; }
 }
+
+/* ── OFFER CARDS (Work With Me page) ── */
+.offers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 740px;
+  margin: 0 auto;
+  border: 0.5px solid var(--cream-dark);
+}
+
+.offer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+.offer-card:last-child { border-bottom: none; }
+
+.offer-card.offer-dark {
+  background: var(--ink);
+}
+.offer-card.offer-pale {
+  background: var(--gold-pale);
+}
+
+.offer-left {
+  padding: 2.5rem;
+  border-right: 0.5px solid var(--cream-dark);
+}
+.offer-card.offer-dark .offer-left {
+  border-right-color: rgba(255,255,255,0.1);
+}
+
+.offer-right {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.offer-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.offer-card.offer-dark .offer-tag { color: var(--gold-light); }
+
+.offer-name {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+.offer-name em { font-style: italic; color: var(--gold); }
+.offer-card.offer-dark .offer-name { color: var(--cream); }
+
+.offer-desc {
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin: 0;
+}
+.offer-card.offer-dark .offer-desc { color: rgba(248,244,238,0.65); }
+
+.offer-price {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.offer-card.offer-dark .offer-price { color: var(--cream); }
+
+.offer-price-note {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.offer-card.offer-dark .offer-price-note { color: rgba(248,244,238,0.45); }
+
+.offer-includes {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.offer-includes li {
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  padding: 0.4rem 0 0.4rem 1rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  position: relative;
+  line-height: 1.5;
+}
+.offer-card.offer-dark .offer-includes li {
+  color: rgba(248,244,238,0.65);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.offer-includes li:last-child { border-bottom: none; }
+.offer-includes li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.5rem;
+  top: 0.65rem;
+}
+
+.offer-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+.offer-btn:hover { background: var(--ink); color: var(--cream); }
+
+.offer-btn.offer-btn-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.offer-btn.offer-btn-gold:hover { background: var(--gold); color: white; }
+
+.offer-btn.offer-btn-cream {
+  border-color: rgba(248,244,238,0.35);
+  color: var(--cream);
+}
+.offer-btn.offer-btn-cream:hover { background: var(--cream); color: var(--ink); }
+
+@media (max-width: 768px) {
+  .offer-card { grid-template-columns: 1fr; }
+  .offer-left {
+    border-right: none;
+    border-bottom: 0.5px solid var(--cream-dark);
+  }
+  .offer-card.offer-dark .offer-left {
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+}
 </style>
 </head>
 <body>
@@ -854,6 +1016,7 @@ footer a:hover { color: var(--gold); }
     <button class="nav-link" onclick="showPage('testimonials'); closeMenu()">What others say</button>
     <a href="https://anisabutt.substack.com" target="_blank" class="nav-link" onclick="closeMenu()">Writing</a>
     <button class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</button>
+    <button class="nav-link" onclick="showPage('offers'); closeMenu()">Work With Me</button>
     <button class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</button>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:151;">
@@ -1581,6 +1744,44 @@ footer a:hover { color: var(--gold); }
     </div>
   </div>
 
+  <!-- PRICING -->
+  <div style="background: var(--cream); border-top: 0.5px solid var(--cream-dark); padding: 5rem 2rem;">
+    <div style="max-width: 660px; margin: 0 auto;">
+      <div class="reveal">
+        <p class="section-label">Investment</p>
+        <h2 class="section-title">Choose the right<br><em>entry point for you.</em></h2>
+        <p>All 1-1 work begins with a conversation. Apply below and we will find the structure that is right for where you are.</p>
+      </div>
+      <div style="display:grid; gap:0; border: 0.5px solid var(--cream-dark); margin-top: 2rem;" class="reveal">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid var(--cream-dark);">
+          <div style="padding: 1.8rem; border-right: 0.5px solid var(--cream-dark);">
+            <p style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Single session</p>
+            <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--ink); line-height:1; margin-bottom:0.3rem;">£175</p>
+            <p style="font-size:0.8rem; color:var(--ink-soft); margin:0;">75 minutes · ideal first step</p>
+          </div>
+          <div style="padding: 1.8rem;">
+            <p style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Deep Dive Clarity Call</p>
+            <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--ink); line-height:1; margin-bottom:0.3rem;">£195</p>
+            <p style="font-size:0.8rem; color:var(--ink-soft); margin:0;">2 hours · focused excavation</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr;">
+          <div style="padding: 1.8rem; border-right: 0.5px solid var(--cream-dark);">
+            <p style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">6-session package</p>
+            <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--ink); line-height:1; margin-bottom:0.3rem;">£950</p>
+            <p style="font-size:0.8rem; color:var(--ink-soft); margin:0;">Two instalments available · deeper pattern work</p>
+          </div>
+          <div style="padding: 1.8rem; background: var(--gold-pale);">
+            <p style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Longer container</p>
+            <p style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--ink); line-height:1; margin-bottom:0.3rem;">By conversation</p>
+            <p style="font-size:0.8rem; color:var(--ink-soft); margin:0;">Bespoke · discussed on application</p>
+          </div>
+        </div>
+      </div>
+      <p class="reveal" style="font-size:0.8rem; color:var(--ink-soft); margin-top:1.2rem; text-align:center;">Apply below — Ani reads every application personally and will discuss the right path with you.</p>
+    </div>
+  </div>
+
   <!-- ENQUIRY FORM -->
   <div class="form-section" id="onetoone-form">
     <div class="form-inner">
@@ -1777,6 +1978,160 @@ footer a:hover { color: var(--gold); }
   </footer>
 </div>
 
+<!-- ════════════════════════════════════════ -->
+<!-- PAGE: WORK WITH ME -->
+<!-- ════════════════════════════════════════ -->
+<div class="page" id="page-offers">
+
+  <!-- HERO -->
+  <div style="padding: 9rem 2rem 5rem; max-width:740px; margin:0 auto; border-bottom: 0.5px solid var(--cream-dark);">
+    <p class="eyebrow" style="opacity:1; animation:none;">Work with Ani</p>
+    <h1 class="hero-title" style="opacity:1; animation:none; font-size:clamp(2.4rem, 5vw, 3.8rem);">
+      There is a version of you<br>you have not yet <em>fully lived.</em>
+    </h1>
+    <p style="font-family:var(--serif); font-size:1.1rem; font-style:italic; color:var(--ink-mid); margin-top:1rem;">Find the right way in — wherever you are right now.</p>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="reveal">
+      <p class="section-label">How to choose</p>
+      <h2 class="section-title">Every offer begins<br><em>with the same question.</em></h2>
+      <p>What is underneath? Not the behaviour, not the pattern, not the symptom — but what is actually driving it. The work I do, at every level, is about going there.</p>
+      <p>Some people are ready to start quietly, with audio they can return to alone. Some are ready for a group of women to witness them coming home to themselves. Some are ready to go directly, deeply, one to one.</p>
+      <p>All of it is valid. All of it works. The question is where you are right now — and what feels like the truest next step.</p>
+    </div>
+  </div>
+
+  <!-- OFFERS GRID -->
+  <div style="padding: 0 2rem 5rem;">
+    <div class="offers-grid reveal">
+
+      <!-- 1:1 WORK -->
+      <div class="offer-card offer-dark">
+        <div class="offer-left">
+          <span class="offer-tag">Highest touch · Application only</span>
+          <h2 class="offer-name">1-1 Work<br>with <em>Ani</em></h2>
+          <p class="offer-desc">The most direct path. For the person who is ready to stop managing the surface and start understanding what is underneath it.</p>
+          <br>
+          <p class="offer-desc">Using guided visualisation, deep reflective dialogue, and writing as excavation — each session is entirely led by what you bring. I work with a deliberately small number of 1-1 clients. This is intentional.</p>
+        </div>
+        <div class="offer-right">
+          <div>
+            <span class="offer-price">From £175</span>
+            <p class="offer-price-note">Single session · 75 mins<br>Deep Dive Clarity Call · 2hrs · £195<br>6-session package · £950</p>
+            <ul class="offer-includes">
+              <li>Single sessions from £175</li>
+              <li>Deep Dive Clarity Call — £195</li>
+              <li>6-session package — £950</li>
+              <li>Longer containers by conversation</li>
+              <li>Application read by Ani personally</li>
+            </ul>
+          </div>
+          <span class="offer-btn offer-btn-cream" onclick="showPage('onetoone'); setTimeout(()=>document.getElementById('onetoone-form').scrollIntoView({behavior:'smooth'}),100)">Apply to work together</span>
+        </div>
+      </div>
+
+      <!-- WORDS & THE WORK -->
+      <div class="offer-card offer-pale">
+        <div class="offer-left">
+          <span class="offer-tag">Group container · 6 women maximum</span>
+          <h2 class="offer-name">Words &amp;<br><em>The Work</em></h2>
+          <p class="offer-desc">A 6-week intimate container combining guided visualisation, writing as excavation, and live coaching — in a group of six women who witness each other coming home to themselves.</p>
+          <br>
+          <p class="offer-desc">You do not need to be a writer. You need to be willing to be honest. By Week 6 you will know what you want to do next — and have the courage to begin.</p>
+        </div>
+        <div class="offer-right">
+          <div>
+            <span class="offer-price">£497</span>
+            <p class="offer-price-note">Or 2 payments of £248.50<br>Next cohort date being confirmed</p>
+            <ul class="offer-includes">
+              <li>6 × 90-minute live sessions on Zoom</li>
+              <li>Guided visualisation every session</li>
+              <li>Writing prompts and live coaching</li>
+              <li>Access to session recordings</li>
+              <li>Maximum 6 women — intentionally small</li>
+              <li>A closing poem written for your group</li>
+            </ul>
+          </div>
+          <span class="offer-btn offer-btn-gold" onclick="showPage('work'); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">Register your interest</span>
+        </div>
+      </div>
+
+      <!-- 30 DAYS -->
+      <div class="offer-card">
+        <div class="offer-left">
+          <span class="offer-tag" style="color:var(--gold);">Audio series · Self-paced</span>
+          <h2 class="offer-name">30 Days<br>to <em>Unstuck</em></h2>
+          <p class="offer-desc">A daily audio series. Five minutes each morning. Thirty days. Written and voiced by Ani — designed to walk you back to yourself through the fear, the self-doubt, and the voice that has been telling you it is too late.</p>
+          <br>
+          <p class="offer-desc">This is not a productivity programme. It is about remembering who you are underneath everything that got layered on top. Download once, keep forever.</p>
+        </div>
+        <div class="offer-right">
+          <div>
+            <span class="offer-price">£11.99</span>
+            <p class="offer-price-note">One-time · yours to keep<br>Waitlist open now</p>
+            <ul class="offer-includes">
+              <li>30 audio episodes — under 5 minutes each</li>
+              <li>Three phases: Unblock · Believe · Move</li>
+              <li>Daily affirmation and carry-through prompt</li>
+              <li>Written and voiced by Ani</li>
+              <li>Download once, return whenever you need</li>
+            </ul>
+          </div>
+          <a href="/30days" class="offer-btn">Join the waitlist</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NOT SURE -->
+  <div style="background: var(--ink); padding: 5rem 2rem; text-align:center;">
+    <div style="max-width:560px; margin:0 auto;" class="reveal">
+      <p class="section-label" style="color:var(--gold);">Not sure where to start?</p>
+      <h2 class="section-title" style="color:var(--cream);">Start here.<br><em>It's completely free.</em></h2>
+      <p style="color:rgba(248,244,238,0.7);">Nine free guides to begin the journey back to yourself — right now, today, with no pressure attached.</p>
+      <div style="margin-top:2rem;">
+        <a href="https://unplugwithani.gumroad.com/l/xqmrwy" target="_blank" class="btn btn-gold" style="display:inline-block;">Download all nine — free 🤍</a>
+        <p style="font-size:0.72rem; color:rgba(248,244,238,0.3); margin-top:0.8rem;">Enter £0 at checkout. No card needed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIAL STRIP -->
+  <div style="padding: 5rem 2rem; border-top: 0.5px solid var(--cream-dark);">
+    <div style="max-width:740px; margin:0 auto;">
+      <div class="reveal">
+        <p class="section-label">What others say</p>
+        <h2 class="section-title">Real words from<br><em>real work.</em></h2>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--cream-dark); border:0.5px solid var(--cream-dark); margin-top:2.5rem;" class="reveal">
+        <div style="background:var(--cream); padding:2rem;">
+          <p style="font-family:var(--serif); font-size:1rem; font-style:italic; color:var(--ink-mid); line-height:1.65; margin-bottom:1rem;">"Working with Anisa has been one of the most transformative experiences of my life. Our work together empowered me to reclaim my body with kindness, to break cycles I once thought were unchangeable, and to show up for myself in ways I never thought possible."</p>
+          <p style="font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Sana — 1-1 coaching client</p>
+        </div>
+        <div style="background:var(--gold-pale); padding:2rem;">
+          <p style="font-family:var(--serif); font-size:1rem; font-style:italic; color:var(--ink-mid); line-height:1.65; margin-bottom:1rem;">"I just wanted to express how beautiful your workshop was. I had such an incredible time and unlocked parts of my higher self I didn't know were there. Thank you for creating such a safe and gorgeous space."</p>
+          <p style="font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold);">Molly — facilitation</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2rem;" class="reveal">
+        <span class="btn" style="cursor:pointer;" onclick="showPage('testimonials')">Read all testimonials</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Work with Ani &nbsp;·&nbsp; thisisani.com &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+    </p>
+  </footer>
+</div>
+
 <script>
 // ── UNSTUCK FORM ──
 function submitUnstuck(e) {
@@ -1822,20 +2177,21 @@ function closeMenu() {
 document.addEventListener('DOMContentLoaded', function() {
   var hamburger = document.getElementById('hamburger');
   if (hamburger) {
-    ['click', 'touchend'].forEach(function(evt) {
-      hamburger.addEventListener(evt, function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleMenu();
-      }, false);
-    });
+    // Only bind 'click' — mobile browsers synthesize a click on tap.
+    // touch-action:manipulation on the button removes the 300ms delay.
+    // Binding both 'click' and 'touchend' caused double-toggle (open → close instantly).
+    hamburger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    }, false);
   }
 
-  // Close menu when tapping outside
-  document.addEventListener('touchend', function(e) {
+  // Close menu when clicking or tapping outside
+  document.addEventListener('click', function(e) {
     var nav = document.getElementById('navLinks');
-    var hamburger = document.getElementById('hamburger');
-    if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+    var ham = document.getElementById('hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) {
       closeMenu();
     }
   }, false);
