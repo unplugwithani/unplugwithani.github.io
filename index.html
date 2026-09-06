@@ -791,9 +791,9 @@ footer a:hover { color: var(--gold); }
     justify-content: flex-start;
     align-items: stretch;
     z-index: 150;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-top: 60px;
+    padding-top: 70px;
   }
   .nav-links.open { display: flex; }
   .nav-links button.nav-link,
@@ -1019,10 +1019,11 @@ footer a:hover { color: var(--gold); }
     <button class="nav-link" onclick="showPage('offers'); closeMenu()">Work With Me</button>
     <button class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:151;">
+  <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:200;" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div id="navOverlay" onclick="closeMenu()" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:149; background:transparent;"></div>
 
 <!-- ════════════════════════════════════════ -->
 <!-- PAGE: WORDS & THE WORK -->
@@ -2153,35 +2154,15 @@ function showPage(name) {
 // ── MENU ──
 function toggleMenu() {
   var nav = document.getElementById('navLinks');
-  nav.classList.toggle('open');
+  var overlay = document.getElementById('navOverlay');
+  var isOpen = nav.classList.toggle('open');
+  if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
 }
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
+  var overlay = document.getElementById('navOverlay');
+  if (overlay) overlay.style.display = 'none';
 }
-
-// Universal iOS + Android touch fix
-document.addEventListener('DOMContentLoaded', function() {
-  var hamburger = document.getElementById('hamburger');
-  if (hamburger) {
-    // Only bind 'click' — mobile browsers synthesize a click on tap.
-    // touch-action:manipulation on the button removes the 300ms delay.
-    // Binding both 'click' and 'touchend' caused double-toggle (open → close instantly).
-    hamburger.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      toggleMenu();
-    }, false);
-  }
-
-  // Close menu when clicking or tapping outside
-  document.addEventListener('click', function(e) {
-    var nav = document.getElementById('navLinks');
-    var ham = document.getElementById('hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)) {
-      closeMenu();
-    }
-  }, false);
-});
 
 // ── SCROLL REVEAL ──
 function initReveal() {
