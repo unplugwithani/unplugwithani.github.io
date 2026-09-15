@@ -814,6 +814,7 @@ footer a:hover { color: var(--gold); }
     letter-spacing: 0.1em;
     box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    touch-action: manipulation;
     cursor: pointer;
   }
 
@@ -1024,13 +1025,11 @@ footer a:hover { color: var(--gold); }
     <button class="nav-link" onclick="showPage('contact'); closeMenu()">Contact</button>
     <button class="nav-link" onclick="showPage('offers'); closeMenu()">Work With Me</button>
     <button class="nav-link" onclick="showPage('dearani'); closeMenu()">Dear Ani</button>
-    <button class="nav-cta" onclick="showPage('work'); closeMenu(); setTimeout(()=>document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}),100)">I want to experience this</button>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:200;" onclick="var n=document.getElementById('navLinks'); var o=document.getElementById('navOverlay'); var open=n.classList.toggle('open'); if(o) o.style.display=open?'block':'none';">
+  <button class="hamburger" id="hamburger" aria-label="Menu" style="position:relative; z-index:200;" onclick="document.getElementById('navLinks').classList.toggle('open'); return false;">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div id="navOverlay" onclick="closeMenu()" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:149; background:transparent;"></div>
 
 <!-- ════════════════════════════════════════ -->
 <!-- PAGE: WORDS & THE WORK -->
@@ -2131,20 +2130,16 @@ footer a:hover { color: var(--gold); }
 <!-- ════════════════════════════════════════ -->
 <div class="page" id="page-dearani">
 
-  <!-- HERO -->
-  <div style="padding: 9rem 2rem 5rem; text-align:center; border-bottom: 0.5px solid var(--cream-dark); position:relative; overflow:hidden;">
+  <div style="padding:9rem 2rem 5rem; text-align:center; border-bottom:0.5px solid var(--cream-dark); position:relative; overflow:hidden;">
     <div style="position:absolute; top:20%; left:50%; transform:translateX(-50%); width:500px; height:500px; background:radial-gradient(circle, rgba(184,149,90,0.07) 0%, transparent 70%); pointer-events:none;"></div>
     <p class="eyebrow" style="opacity:1; animation:none;">A column for paid subscribers</p>
-    <h1 class="hero-title" style="opacity:1; animation:none; font-size:clamp(3rem, 7vw, 5.5rem);">
-      Dear <em>Ani</em>
-    </h1>
+    <h1 class="hero-title" style="opacity:1; animation:none; font-size:clamp(3rem, 7vw, 5.5rem);">Dear <em>Ani</em></h1>
     <p style="font-family:var(--serif); font-size:clamp(1rem, 2.2vw, 1.25rem); font-style:italic; color:var(--ink-mid); max-width:500px; margin:1.5rem auto 0; line-height:1.6;">Real letters. Honest answers. Once a month, exclusively for paid Substack subscribers.</p>
     <div style="margin-top:2.5rem;">
       <a href="https://anisabutt.substack.com" target="_blank" class="btn btn-gold">Become a paid subscriber</a>
     </div>
   </div>
 
-  <!-- WHAT IT IS -->
   <div class="section reveal">
     <p class="section-label">What is Dear Ani?</p>
     <h2 class="section-title">Your questions.<br><em>Answered honestly.</em></h2>
@@ -2153,15 +2148,13 @@ footer a:hover { color: var(--gold); }
     <p>Every letter gets read. Selected letters are answered in the column. All others receive a private reply from me directly.</p>
   </div>
 
-  <!-- PULLQUOTE -->
   <div style="max-width:680px; margin:0 auto; padding:0 2rem;">
     <div class="pullquote reveal">
       <p>This is not a Q&A with a stranger on the internet. This is a letter to someone who does this work — and will write back.</p>
     </div>
   </div>
 
-  <!-- WHAT YOU CAN WRITE ABOUT -->
-  <div class="section reveal" style="border-top: 0.5px solid var(--cream-dark);">
+  <div class="section reveal" style="border-top:0.5px solid var(--cream-dark);">
     <p class="section-label">What to write about</p>
     <h2 class="section-title">Anything in<br><em>this territory.</em></h2>
     <ul class="for-list" style="margin-top:1.5rem;">
@@ -2175,7 +2168,6 @@ footer a:hover { color: var(--gold); }
     </ul>
   </div>
 
-  <!-- HOW IT WORKS -->
   <div style="background:var(--ink); padding:5rem 2rem;">
     <div style="max-width:680px; margin:0 auto;">
       <div class="reveal">
@@ -2185,50 +2177,36 @@ footer a:hover { color: var(--gold); }
       <div style="display:grid; gap:0; border:0.5px solid rgba(255,255,255,0.1); margin-top:2rem;" class="reveal">
         <div style="padding:1.8rem; border-bottom:0.5px solid rgba(255,255,255,0.1); display:grid; grid-template-columns:40px 1fr; gap:1rem; align-items:start;">
           <span style="font-family:var(--serif); font-size:1.4rem; color:var(--gold); line-height:1;">01</span>
-          <div>
-            <p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Become a paid subscriber</p>
-            <p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">£8/month or £65/year on Substack. Your welcome email contains the submission link.</p>
-          </div>
+          <div><p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Become a paid subscriber</p><p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">£8/month or £65/year on Substack. Your welcome email contains the submission link.</p></div>
         </div>
         <div style="padding:1.8rem; border-bottom:0.5px solid rgba(255,255,255,0.1); display:grid; grid-template-columns:40px 1fr; gap:1rem; align-items:start;">
           <span style="font-family:var(--serif); font-size:1.4rem; color:var(--gold); line-height:1;">02</span>
-          <div>
-            <p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Submit your letter</p>
-            <p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Use the private form sent to paid subscribers. Write as much or as little as feels true. No wrong way to do this.</p>
-          </div>
+          <div><p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Submit your letter</p><p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Use the private form sent to paid subscribers. Write as much or as little as feels true.</p></div>
         </div>
         <div style="padding:1.8rem; border-bottom:0.5px solid rgba(255,255,255,0.1); display:grid; grid-template-columns:40px 1fr; gap:1rem; align-items:start;">
           <span style="font-family:var(--serif); font-size:1.4rem; color:var(--gold); line-height:1;">03</span>
-          <div>
-            <p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Ani reads every letter</p>
-            <p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Each month one letter is chosen and answered in full — published for all paid subscribers. Others receive a private reply.</p>
-          </div>
+          <div><p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Ani reads every letter</p><p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Each month one letter is answered in full — published for all paid subscribers. Others receive a private reply.</p></div>
         </div>
         <div style="padding:1.8rem; display:grid; grid-template-columns:40px 1fr; gap:1rem; align-items:start;">
           <span style="font-family:var(--serif); font-size:1.4rem; color:var(--gold); line-height:1;">04</span>
-          <div>
-            <p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Read every answer</p>
-            <p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Even if it is not your letter — every published reply is written for paid subscribers to read and find themselves in.</p>
-          </div>
+          <div><p style="font-family:var(--serif); font-size:1.05rem; color:var(--cream); margin-bottom:0.3rem;">Read every answer</p><p style="font-size:0.88rem; color:rgba(248,244,238,0.6); margin:0;">Every published reply is written for paid subscribers to read and find themselves in.</p></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ALSO INCLUDED -->
   <div class="section reveal" style="border-top:0.5px solid var(--cream-dark);">
     <p class="section-label">Also included</p>
     <h2 class="section-title">As a paid subscriber<br><em>you also get:</em></h2>
     <ul class="for-list" style="margin-top:1.5rem;">
       <li>The Dear Ani monthly column — real letters, honest answers, exclusive to paid</li>
-      <li>Writing prompts and inner work exercises straight from my private practice</li>
+      <li>Writing prompts and inner work exercises from my private practice</li>
       <li>The ability to submit your own letter knowing it will be read personally</li>
       <li>A private reply if your letter is not chosen for the column that month</li>
     </ul>
   </div>
 
-  <!-- CTA -->
-  <div style="background:var(--gold-pale); border-top:0.5px solid var(--cream-dark); border-bottom:0.5px solid var(--cream-dark); padding:5rem 2rem; text-align:center;">
+  <div style="background:var(--gold-pale); border-top:0.5px solid var(--cream-dark); padding:5rem 2rem; text-align:center;">
     <div style="max-width:520px; margin:0 auto;" class="reveal">
       <p class="section-label">Ready?</p>
       <h2 class="section-title">Your letter<br><em>is waiting to be written.</em></h2>
@@ -2242,12 +2220,7 @@ footer a:hover { color: var(--gold); }
   </div>
 
   <footer>
-    <p>
-      Dear Ani &nbsp;·&nbsp; a column by Ani &nbsp;·&nbsp;
-      <a href="https://anisabutt.substack.com" target="_blank">Read on Substack</a>
-      &nbsp;·&nbsp;
-      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
-    </p>
+    <p>Dear Ani &nbsp;·&nbsp; a column by Ani &nbsp;·&nbsp; <a href="https://anisabutt.substack.com" target="_blank">Read on Substack</a> &nbsp;·&nbsp; <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a></p>
   </footer>
 
 </div>
@@ -2286,15 +2259,10 @@ function showPage(name) {
 
 // ── MENU ──
 function toggleMenu() {
-  var nav = document.getElementById('navLinks');
-  var overlay = document.getElementById('navOverlay');
-  var isOpen = nav.classList.toggle('open');
-  if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
+  document.getElementById('navLinks').classList.toggle('open');
 }
 function closeMenu() {
   document.getElementById('navLinks').classList.remove('open');
-  var overlay = document.getElementById('navOverlay');
-  if (overlay) overlay.style.display = 'none';
 }
 
 // ── SCROLL REVEAL ──
