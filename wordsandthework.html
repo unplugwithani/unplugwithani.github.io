@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Words & The Work — Unplug With Ani</title>
+<meta name="description" content="A 6-week writing and inner work container for women ready to come home to themselves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F8F4EE;
+  --cream-dark: #EDE7DC;
+  --ink: #1C1914;
+  --ink-mid: #4A4540;
+  --ink-soft: #8A847C;
+  --gold: #B8955A;
+  --gold-light: #D4B07A;
+  --gold-pale: #F2E8D5;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(248, 244, 238, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+
+.nav-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+
+.nav-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--sans);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.nav-link:hover { color: var(--gold); }
+.nav-link.active { color: var(--gold); }
+
+.nav-cta {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 400;
+  border: 0.5px solid var(--gold);
+  padding: 0.45rem 1rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: none;
+  font-family: var(--sans);
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-cta:hover { background: var(--gold); color: white; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 5rem;
+  overflow: hidden;
+}
+
+.hero-text {
+  padding: 6rem 4rem 6rem 5vw;
+}
+
+.hero-image-col {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(20%);
+}
+
+.hero-image-col::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-style: italic;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.6s forwards;
+}
+
+.hero-detail {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s forwards;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s forwards;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0.8rem 1.8rem;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.25s;
+}
+.btn:hover { background: var(--ink); color: var(--cream); }
+
+.btn-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-gold:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+.btn-filled {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.btn-filled:hover { background: var(--gold); border-color: var(--gold); color: white; }
+
+/* ── SECTIONS ── */
+.section {
+  padding: 6rem 2rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.section-wide {
+  padding: 6rem 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+p {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+
+/* ── DIVIDERS ── */
+.gold-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 2.5rem 0;
+}
+
+.section-border { border-top: 0.5px solid var(--cream-dark); }
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  border-left: 1.5px solid var(--gold);
+  padding: 0.5rem 0 0.5rem 1.8rem;
+  margin: 2.5rem 0;
+}
+.pullquote p {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-style: italic;
+  color: var(--ink);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── FUNNEL STRIP (dark) ── */
+.funnel-strip {
+  background: var(--ink);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.funnel-strip .section-label { color: var(--gold); }
+.funnel-strip .section-title { color: var(--cream); }
+.funnel-strip p { color: rgba(248,244,238,0.7); max-width: 560px; margin: 0 auto 1em; }
+.funnel-strip .gold-line { margin: 2rem auto; }
+
+/* ── FUNNEL QUESTIONS ── */
+.funnel-questions {
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  text-align: left;
+}
+.funnel-q {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  color: rgba(248,244,238,0.85);
+  font-size: 0.95rem;
+}
+.funnel-q:last-child { border-bottom: none; }
+.funnel-q::before {
+  content: '→';
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-top: 0.1em;
+  flex-shrink: 0;
+}
+
+/* ── WEEKS ── */
+.weeks {
+  margin: 2.5rem 0;
+  border: 0.5px solid var(--cream-dark);
+}
+.week-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  border-bottom: 0.5px solid var(--cream-dark);
+  transition: background 0.2s;
+  cursor: default;
+}
+.week-item:last-child { border-bottom: none; }
+.week-item:hover { background: var(--gold-pale); }
+
+.week-num {
+  padding: 1.4rem 1rem;
+  border-right: 0.5px solid var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+.week-content { padding: 1.4rem 1.6rem; }
+.week-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.3em;
+  line-height: 1.3;
+}
+.week-desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* ── FOR YOU LIST ── */
+.for-list {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+.for-list li {
+  padding: 0.75rem 0;
+  padding-left: 1.4rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  position: relative;
+}
+.for-list li:last-child { border-bottom: none; }
+.for-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* ── DETAILS STRIP ── */
+.details-strip {
+  background: var(--gold-pale);
+  border-top: 0.5px solid var(--cream-dark);
+  border-bottom: 0.5px solid var(--cream-dark);
+  padding: 3.5rem 2rem;
+}
+.details-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.detail-item { display: flex; flex-direction: column; gap: 0.3rem; }
+.detail-value {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+.detail-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── PIONEER PRICING SECTION ── */
+.pricing-section {
+  background: var(--ink);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.pricing-box {
+  max-width: 520px;
+  margin: 0 auto;
+  border: 0.5px solid rgba(184,149,90,0.4);
+  padding: 3rem 2.5rem;
+  position: relative;
+}
+.pricing-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: white;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  white-space: nowrap;
+}
+.pricing-price {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  margin: 1rem 0 0.3rem;
+}
+.pricing-was {
+  font-size: 0.8rem;
+  color: rgba(248,244,238,0.4);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+.pricing-section .section-label { color: var(--gold); margin-bottom: 0.5rem; }
+.pricing-section p { color: rgba(248,244,238,0.65); max-width: 420px; margin: 0 auto 0.8em; font-size: 0.9rem; }
+.pricing-includes {
+  list-style: none;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+.pricing-includes li {
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  font-size: 0.88rem;
+  color: rgba(248,244,238,0.8);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.pricing-includes li:last-child { border-bottom: none; }
+.pricing-includes li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.5rem; top: 0.7rem; }
+.pricing-note {
+  font-size: 0.72rem;
+  color: rgba(248,244,238,0.35);
+  letter-spacing: 0.06em;
+  margin-top: 1.2rem !important;
+}
+
+/* ── ABOUT DARK ── */
+.about-dark {
+  background: var(--ink);
+  padding: 6rem 2rem;
+}
+.about-dark-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: center;
+}
+.about-dark .section-label { color: var(--gold); }
+.about-dark .section-title { color: var(--cream); }
+.about-dark p { color: rgba(248,244,238,0.7); }
+.about-dark .gold-line { background: var(--gold); }
+.about-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(30%);
+}
+
+/* ── ABOUT PAGE ── */
+.about-hero {
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding-top: 5rem;
+  overflow: hidden;
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+.about-hero-text {
+  padding: 5rem 3rem 5rem 5vw;
+}
+.about-hero-img {
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--cream-dark);
+}
+.about-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.bio-section {
+  padding: 5rem 2rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--cream-dark);
+  margin: 2.5rem 0;
+}
+.credential {
+  padding: 1.8rem 1.4rem;
+  border-right: 0.5px solid var(--cream-dark);
+  text-align: center;
+}
+.credential:last-child { border-right: none; }
+.credential-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.credential-sub {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  border: 0.5px solid var(--cream-dark);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+.link-card:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-pale);
+}
+.link-icon {
+  font-size: 1rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.link-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 0.1rem; }
+.link-name { font-family: var(--serif); font-size: 1rem; }
+
+/* ── FORM SECTION ── */
+.form-section {
+  background: var(--ink);
+  padding: 5rem 2rem;
+}
+.form-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.form-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.form-title em { font-style: italic; color: var(--gold); }
+.form-subtitle {
+  font-size: 0.92rem;
+  color: rgba(248,244,238,0.6);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+.form-group { margin-bottom: 1.4rem; }
+.form-group label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248,244,238,0.5);
+  margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid rgba(255,255,255,0.15);
+  color: var(--cream);
+  padding: 0.9rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(248,244,238,0.25); }
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+
+.submit-btn {
+  width: 100%;
+  background: var(--gold);
+  color: white;
+  border: none;
+  padding: 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover { background: var(--gold-light); }
+.form-note {
+  font-size: 0.72rem;
+  color: rgba(248,244,238,0.3);
+  text-align: center;
+  margin-top: 0.8rem !important;
+  letter-spacing: 0.04em;
+}
+
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.success-msg p {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+/* ── CONTACT PAGE ── */
+.contact-hero {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10rem 2rem 5rem;
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 2rem 0;
+  border: 0.5px solid var(--cream-dark);
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+.social-link:last-child { border-bottom: none; }
+.social-link:hover { background: var(--gold-pale); color: var(--gold); }
+.social-link-left { display: flex; align-items: center; gap: 1rem; }
+.social-platform { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); width: 80px; }
+.social-handle { font-family: var(--serif); font-size: 1.05rem; }
+.social-arrow { color: var(--gold); font-size: 0.9rem; transition: transform 0.2s; }
+.social-link:hover .social-arrow { transform: translateX(4px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+footer p {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(248,244,238,0.35);
+  text-transform: uppercase;
+  margin: 0;
+}
+footer a {
+  color: rgba(248,244,238,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 62px;
+    left: 0;
+    right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 200;
+    border-bottom: 1px solid var(--cream-dark);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    max-height: calc(100vh - 62px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links button.nav-link,
+  .nav-links a.nav-link,
+  .nav-links .nav-cta {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 0.5px solid var(--cream-dark);
+    font-size: 0.9rem !important;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image-col { height: 50vw; order: -1; }
+  .hero-image-col::after { background: linear-gradient(to bottom, transparent 60%, var(--cream)); }
+  .hero-text { padding: 3rem 1.5rem 4rem; }
+
+  .about-hero { grid-template-columns: 1fr; min-height: auto; }
+  .about-hero-img { height: 50vw; order: -1; }
+  .about-hero-text { padding: 3rem 1.5rem; }
+
+  .about-dark-inner { grid-template-columns: 1fr; }
+  .about-dark-inner .about-img { display: none; }
+
+  .details-inner { grid-template-columns: repeat(2, 1fr); }
+  .credentials { grid-template-columns: 1fr; }
+  .credential { border-right: none; border-bottom: 0.5px solid var(--cream-dark); }
+  .credential:last-child { border-bottom: none; }
+  .links-grid { grid-template-columns: 1fr; }
+
+  .section { padding: 4rem 1.5rem; }
+  .section-wide { padding: 4rem 1.5rem; }
+  .bio-section { padding: 4rem 1.5rem; }
+  .form-section { padding: 4rem 1.5rem; }
+  .about-dark { padding: 4rem 1.5rem; }
+  .funnel-strip { padding: 4rem 1.5rem; }
+  .pricing-section { padding: 4rem 1.5rem; }
+  nav { padding: 1rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .details-inner { grid-template-columns: 1fr 1fr; }
+  .hero-btns { flex-direction: column; }
+  .hero-btns .btn { text-align: center; }
+}
+
+/* ── OFFER CARDS (Work With Me page) ── */
+.offers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 740px;
+  margin: 0 auto;
+  border: 0.5px solid var(--cream-dark);
+}
+
+.offer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px solid var(--cream-dark);
+}
+.offer-card:last-child { border-bottom: none; }
+
+.offer-card.offer-dark {
+  background: var(--ink);
+}
+.offer-card.offer-pale {
+  background: var(--gold-pale);
+}
+
+.offer-left {
+  padding: 2.5rem;
+  border-right: 0.5px solid var(--cream-dark);
+}
+.offer-card.offer-dark .offer-left {
+  border-right-color: rgba(255,255,255,0.1);
+}
+
+.offer-right {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.offer-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.offer-card.offer-dark .offer-tag { color: var(--gold-light); }
+
+.offer-name {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+.offer-name em { font-style: italic; color: var(--gold); }
+.offer-card.offer-dark .offer-name { color: var(--cream); }
+
+.offer-desc {
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin: 0;
+}
+.offer-card.offer-dark .offer-desc { color: rgba(248,244,238,0.65); }
+
+.offer-price {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.offer-card.offer-dark .offer-price { color: var(--cream); }
+
+.offer-price-note {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.offer-card.offer-dark .offer-price-note { color: rgba(248,244,238,0.45); }
+
+.offer-includes {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.offer-includes li {
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  padding: 0.4rem 0 0.4rem 1rem;
+  border-bottom: 0.5px solid var(--cream-dark);
+  position: relative;
+  line-height: 1.5;
+}
+.offer-card.offer-dark .offer-includes li {
+  color: rgba(248,244,238,0.65);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.offer-includes li:last-child { border-bottom: none; }
+.offer-includes li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.5rem;
+  top: 0.65rem;
+}
+
+.offer-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: 0.5px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+.offer-btn:hover { background: var(--ink); color: var(--cream); }
+
+.offer-btn.offer-btn-gold {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.offer-btn.offer-btn-gold:hover { background: var(--gold); color: white; }
+
+.offer-btn.offer-btn-cream {
+  border-color: rgba(248,244,238,0.35);
+  color: var(--cream);
+}
+.offer-btn.offer-btn-cream:hover { background: var(--cream); color: var(--ink); }
+
+@media (max-width: 768px) {
+  .offer-card { grid-template-columns: 1fr; }
+  .offer-left {
+    border-right: none;
+    border-bottom: 0.5px solid var(--cream-dark);
+  }
+  .offer-card.offer-dark .offer-left {
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+}
+</style>
+
+</head>
+<body>
+<nav>
+  <a href="https://thisisani.com" class="nav-name">Ani</a>
+  <a href="https://thisisani.com" style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); text-decoration:none; font-weight:400;">← thisisani.com</a>
+</nav>
+
+  <!-- HERO -->
+  <div style="padding: 9rem 2rem 5rem; max-width:740px; margin:0 auto; border-bottom: 0.5px solid var(--cream-dark);">
+    <p class="eyebrow" style="opacity:1; animation:none;">A 6-week container for women ready to come home to themselves</p>
+    <h1 class="hero-title" style="opacity:1; animation:none; font-size: clamp(2.8rem, 6vw, 4.5rem);">
+      Words<br><em style="color:var(--gold);">&amp; The Work</em>
+    </h1>
+    <p style="font-family:var(--serif); font-size:1.2rem; font-style:italic; color:var(--ink-mid); margin-top:1rem;">
+      90 minutes a week. 6 women. 6 weeks. Every Sunday at 5pm BST.
+    </p>
+    <p style="font-size:0.78rem; letter-spacing:0.08em; color:var(--ink-soft); margin-top:1rem;">Next cohort date coming soon &nbsp;·&nbsp; Register your interest below to hear first</p>
+  </div>
+
+  <!-- WHAT IT IS -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">What this is</p>
+      <h2 class="section-title">Not a course.<br>Not a workshop.<br><em>A remembering.</em></h2>
+    </div>
+    <div class="reveal">
+      <p>Each session we come together as six women and we remember. Not who we are supposed to be. Not the daughter, the sister, the wife, the mother, the colleague. All of that gets left at the door.</p>
+      <p>For 90 minutes every Sunday you are just you. Fully, completely, without apology.</p>
+      <p>We open with a guided visualisation — not a relaxation exercise, but a doorway. A way of accessing the deepest parts of yourself that the thinking mind cannot reach alone. What surfaces there is real. Then you write it. Unedited, unfiltered, no stopping. This is not journalling as habit. This is journalling as excavation.</p>
+      <p>Then we talk. Live coaching that witnesses you, challenges you gently, and holds you accountable to what you actually want. Because the women in this room are not just participants. They are mirrors. Each one reflecting something back to you that you could not see alone.</p>
+      <p>This is a space where you take responsibility for what you want to create. Where you remember that you are not waiting for life to happen. You are already co-creating it, right here, right now. Together.</p>
+      <p>You leave every session with a recording to return to. Life happens — if you ever need to miss a live session, the recording means you never lose the thread. You leave the six weeks with something more valuable than that — a group of women who have watched you come home to yourself, and who you have watched come home too.</p>
+    </div>
+    <div class="pullquote reveal">
+      <p>This is not about fixing yourself. You were never broken. This is about remembering.</p>
+    </div>
+  </div>
+
+  <!-- SESSION FORMAT STRIP -->
+  <div class="details-strip" style="background: var(--ink); border-color: rgba(255,255,255,0.08);">
+    <div style="max-width:740px; margin:0 auto; text-align:center;">
+      <p class="section-label reveal" style="color:var(--gold);">Every session. Every week.</p>
+      <h2 class="section-title reveal" style="color:var(--cream); margin-bottom:0.5rem;">Go deep. Write truth.<br><em style="color:var(--gold);">Be witnessed. Come home.</em></h2>
+      <p class="reveal" style="color:rgba(248,244,238,0.5); font-size:0.78rem; letter-spacing:0.1em; margin-bottom:2rem;">Sundays · 5pm BST · 12pm EDT · 9am PDT · 8pm GST</p>
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem; max-width:600px; margin: 0 auto;" class="reveal">
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">01</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Remember</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">A live guided visualisation that takes you beneath the noise, the roles, the performance. A doorway to the deepest parts of yourself that thinking alone cannot reach.</div>
+        </div>
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">02</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Write</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">A powerful live journalling practice. No editing. No stopping. What surfaces, you write. Unfiltered and honest. This is not journalling as habit. This is journalling as excavation.</div>
+        </div>
+        <div style="text-align:center; padding:1.5rem 1rem; border: 0.5px solid rgba(255,255,255,0.1);">
+          <div style="font-family:var(--serif); font-size:2rem; color:var(--gold); margin-bottom:0.5rem;">03</div>
+          <div style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(248,244,238,0.5); margin-bottom:0.5rem;">Rise</div>
+          <div style="font-size:0.9rem; color:rgba(248,244,238,0.75); line-height:1.5;">Live coaching and real conversation. Six women becoming mirrors for one another. Holding each other accountable. Co-creating something together that none of you could reach alone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE 6 WEEKS -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">The journey</p>
+      <h2 class="section-title">Six weeks.<br><em>One arc.</em></h2>
+      <p>Each week builds on the last. You arrive not knowing where you'll end up. That's the point.</p>
+    </div>
+    <div class="weeks reveal">
+      <div class="week-item">
+        <div class="week-num">01</div>
+        <div class="week-content">
+          <p class="week-name">Permission</p>
+          <p class="week-desc">We begin here. A guided visualisation opens the space — and then you write. No performance, no editing, no right answers. You arrive exactly as you are, and that is enough.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">02</div>
+        <div class="week-content">
+          <p class="week-name">Excavation</p>
+          <p class="week-desc">Who were you before the world got loud? We go beneath the roles, the habits, the identity built for survival. Then you write what surfaces. She's still in there.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">03</div>
+        <div class="week-content">
+          <p class="week-name">Name It</p>
+          <p class="week-desc">The things you've stopped saying. The specific ways you have silenced yourself — in your relationships, your work, your own head. This week you write them down. Without shame.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">04</div>
+        <div class="week-content">
+          <p class="week-name">Dissolve</p>
+          <p class="week-desc">The identity that no longer serves you gets examined and gently released. What are you carrying that was never yours? What are you still doing out of habit, fear, or the need for approval?</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">05</div>
+        <div class="week-content">
+          <p class="week-name">Rewrite</p>
+          <p class="week-desc">This is where it gets electric. You stop planning to live as the new version and start actually doing it. You write her. You speak her out loud. You are witnessed doing it. The old story loses its grip.</p>
+        </div>
+      </div>
+      <div class="week-item">
+        <div class="week-num">06</div>
+        <div class="week-content">
+          <p class="week-name">Rebirth</p>
+          <p class="week-desc">You share. We witness. We celebrate. You leave this room knowing who you are, what you want to say, and that you are not alone in becoming her. This is the beginning, not the end.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BY THE END -->
+  <div class="funnel-strip">
+    <p class="section-label reveal">By the end of 6 weeks</p>
+    <h2 class="section-title reveal" style="color:var(--cream); max-width:540px; margin: 0.5rem auto 1rem;">You will leave as someone<br><em style="color:var(--gold);">you recognise.</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="funnel-questions">
+      <div class="funnel-q reveal">You have found your voice again and are actively using it — in your work, your relationships, your own head</div>
+      <div class="funnel-q reveal">You have shed the version of yourself that was built for other people and are living as who you actually are</div>
+      <div class="funnel-q reveal">You trust yourself. Not confidence — self-trust. The quiet, unshakeable kind that does not need the approval of the room</div>
+      <div class="funnel-q reveal">You understand that you are already a co-creator of your life — and you are choosing, consciously, what you want to build next</div>
+      <div class="funnel-q reveal">You are part of an honest community of women who have witnessed your becoming — and you theirs</div>
+    </div>
+  </div>
+
+  <!-- IS THIS FOR YOU -->
+  <div class="section section-border">
+    <div class="reveal">
+      <p class="section-label">Is this for you?</p>
+      <h2 class="section-title">This is for the woman<br><em>who has been holding it<br>all together for too long.</em></h2>
+    </div>
+    <ul class="for-list">
+      <li class="reveal">You are functioning, showing up, keeping it together — and something underneath is completely unresolved</li>
+      <li class="reveal">You feel lost and uncertain about your next step — even when life looks fine from the outside</li>
+      <li class="reveal">You are overwhelmed and cannot quite hear your own voice anymore</li>
+      <li class="reveal">You do not fully trust yourself — you keep second-guessing, stopping, starting over</li>
+      <li class="reveal">You know something needs to shift but you cannot think your way to what it is</li>
+      <li class="reveal">You struggle to feel worthy of the things you actually want</li>
+      <li class="reveal">With so many modalities out there, you question which one will actually work for you — and whether anything will shift this time</li>
+    </ul>
+    <div class="pullquote reveal">
+      <p>This is not about confidence. It is about self-trust. The part of you that already knows is still there. She just needs the space to be heard.</p>
+    </div>
+  </div>
+
+  <!-- DETAILS -->
+  <div class="details-strip">
+    <div class="details-inner">
+      <div class="detail-item reveal">
+        <span class="detail-value">6</span>
+        <span class="detail-label">Women maximum</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value">6</span>
+        <span class="detail-label">Weeks together</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value">90</span>
+        <span class="detail-label">Minutes per session</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value" style="font-size:1.3rem;">Coming<br>soon</span>
+        <span class="detail-label">Next cohort date</span>
+      </div>
+      <div class="detail-item reveal">
+        <span class="detail-value" style="font-size:2rem;">£497</span>
+        <span class="detail-label">Investment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing-section">
+    <p class="section-label reveal" style="color:var(--gold);">Next cohort</p>
+    <div class="pricing-box reveal">
+      <div class="pricing-badge">Date being confirmed</div>
+      <p style="color:rgba(248,244,238,0.5); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0; margin-top:0.5rem;">Investment</p>
+      <div class="pricing-price">£497</div>
+      <p class="pricing-was">Or 2 payments of £248.50</p>
+      <ul class="pricing-includes">
+        <li>6 x 90-minute live sessions with Ani</li>
+        <li>A group of 6 women maximum</li>
+        <li>Writing prompts and materials each week</li>
+        <li>Access to session recordings</li>
+        <li>Your voice, reclaimed</li>
+      </ul>
+      <span class="btn btn-gold" style="display:block; text-align:center; margin-bottom:0.8rem; cursor:pointer;" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Register my interest</span>
+      <p class="pricing-note">The next cohort date is being confirmed. Register your interest below and you will hear first when doors open.</p>
+    </div>
+  </div>
+
+  <!-- FREE GUIDES FUNNEL -->
+  <div style="background: var(--cream); padding: 5rem 2rem; border-top: 0.5px solid var(--cream-dark);">
+    <div style="max-width: 560px; margin: 0 auto; text-align: center;">
+      <div class="reveal">
+        <p class="section-label">Still thinking about it?</p>
+        <h2 class="section-title">Start here.<br><em>It's completely free.</em></h2>
+        <p style="color: var(--ink-mid); max-width: 440px; margin: 0 auto 1.5rem;">Not quite ready to commit? That's okay. Ani has curated nine free guides to help you begin the journey back to yourself — right now, today, with no pressure attached.</p>
+        <p style="color: var(--ink-mid); max-width: 440px; margin: 0 auto 2rem;">Download them, sit with them, and when you're ready — you'll know.</p>
+      </div>
+      <div class="reveal" style="border: 0.5px solid var(--cream-dark); margin-bottom: 2rem; text-align: left;">
+        <div style="padding: 1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Emotional Reset</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">A daily ritual to come back to safety</span>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Nervous System Check-In</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Understand what your body is telling you</span>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Reparenting Reflections</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Meet your inner child with compassion</span>
+        </div>
+        <div style="padding: 1rem 1.5rem; border-bottom: 0.5px solid var(--cream-dark); display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">Find Yourself Again Map</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Reconnect with the you that got lost</span>
+        </div>
+        <div style="padding: 1rem 1.5rem; display:flex; align-items:center; gap:1rem;">
+          <span style="color:var(--gold); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; width:180px; flex-shrink:0;">+ 5 more inside</span>
+          <span style="font-size:0.88rem; color:var(--ink-soft);">Nine guides total — all free</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <a href="https://unplugwithani.gumroad.com/l/xqmrwy" target="_blank" class="btn btn-gold">Download all nine — free 🤍</a>
+        <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:1rem;">Enter £0 at checkout. No card needed.</p>
+        <div style="margin-top: 2.5rem; padding: 2rem; background: var(--gold-pale); border: 0.5px solid var(--cream-dark);">
+          <p style="font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); margin-bottom: 1rem;">"The guides are the beginning. Words & The Work is where the real shift happens — live, witnessed, and in community with five other women who are ready for exactly the same thing."</p>
+          <p style="font-size: 0.72rem; color: var(--ink-soft); margin-bottom: 1.2rem;">When you are ready to go deeper — register your interest below and you will hear first when the next cohort opens.</p>
+          <span class="btn btn-filled" style="font-size: 0.68rem; cursor:pointer;" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Register my interest</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST FORM -->
+  <div class="form-section" id="waitlist">
+    <div class="form-inner">
+      <p class="section-label" style="color:var(--gold);">Words & The Work</p>
+      <h2 class="form-title">Register your interest.<br><em>Be the first to know.</em></h2>
+      <p class="form-subtitle">The next cohort date is being confirmed. Leave your details and you will hear from me directly when doors open.</p>
+
+      <form id="waitlistForm" action="https://formspree.io/f/xpqedpdb" method="POST" onsubmit="submitForm(event)">
+        <input type="hidden" name="form-name" value="Words & The Work Enquiry">
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" name="name" placeholder="How you like to be called" required>
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>What's brought you here today?</label>
+          <textarea name="carrying" placeholder="Whatever feels true..." rows="3"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send me a message →</button>
+        <p class="form-note">Ani responds personally. No spam, ever.</p>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <p>Message received.<br><em>Ani will be in touch personally.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Words & The Work &nbsp;·&nbsp; by Ani &nbsp;·&nbsp;
+      <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a>
+      &nbsp;·&nbsp;
+      <a href="https://anisabutt.substack.com" target="_blank">Substack</a>
+      &nbsp;·&nbsp;
+      <a href="https://open.spotify.com/show/45reOrP2mFRaZed8FH6dj7" target="_blank">Podcast</a>
+      &nbsp;·&nbsp;
+      thisisani.com
+    </p>
+  </footer>
+</div>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const success = this.parentElement.querySelector('.success-msg, [id$="Success"]');
+      this.style.display = 'none';
+      if (success) success.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
