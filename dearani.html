@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dear Ani — Unplug With Ani</title>
-<meta name="description" content="A monthly letter column for paid Substack subscribers. Real questions, answered honestly by Ani.">
+<meta name="description" content="For paid Substack subscribers — Dear Ani letter column, The Unplug Hour monthly live session, and a monthly inner work practice. Three ways to go deeper with Ani.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -849,6 +849,24 @@ footer a:hover { color: var(--gold); }
   .hero-btns .btn { text-align: center; }
 }
 
+/* ── PILLARS GRID ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 0.5px solid var(--cream-dark);
+}
+.pillar-card {
+  padding: 2.5rem 2rem;
+  border-right: 0.5px solid var(--cream-dark);
+}
+.pillar-card:last-child { border-right: none; }
+.pillar-card.pillar-pale { background: var(--gold-pale); }
+@media (max-width: 768px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar-card { border-right: none; border-bottom: 0.5px solid var(--cream-dark); }
+  .pillar-card:last-child { border-bottom: none; }
+}
+
 /* ── OFFER CARDS (Work With Me page) ── */
 .offers-grid {
   display: flex;
@@ -1034,7 +1052,7 @@ footer a:hover { color: var(--gold); }
 
   <div style="max-width:680px; margin:0 auto; padding:0 2rem;">
     <div class="pullquote reveal">
-      <p>This is not a Q&A with a stranger on the internet. This is a letter to someone who does this work — and will write back.</p>
+      <p>You're not here for easy answers. You're looking for someone who has sat inside the same rooms — the same wanting, the same performing, the same not-quite-knowing — and found words for it.</p>
     </div>
   </div>
 
@@ -1079,15 +1097,51 @@ footer a:hover { color: var(--gold); }
     </div>
   </div>
 
-  <div class="section reveal" style="border-top:0.5px solid var(--cream-dark);">
-    <p class="section-label">Also included</p>
-    <h2 class="section-title">As a paid subscriber<br><em>you also get:</em></h2>
-    <ul class="for-list" style="margin-top:1.5rem;">
-      <li>The Dear Ani monthly column — real letters, honest answers, exclusive to paid</li>
-      <li>Writing prompts and inner work exercises from my private practice</li>
-      <li>The ability to submit your own letter knowing it will be read personally</li>
-      <li>A private reply if your letter is not chosen for the column that month</li>
-    </ul>
+  <div style="padding:6rem 2rem; max-width:960px; margin:0 auto; border-top:0.5px solid var(--cream-dark);" class="reveal">
+    <p class="section-label" style="text-align:center;">Everything included</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:3.5rem;">Three things waiting<br><em>for paid subscribers.</em></h2>
+    <div class="pillars-grid">
+
+      <div class="pillar-card">
+        <p style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:400;">Pillar I</p>
+        <h3 style="font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--ink); margin-bottom:0.4rem; line-height:1.2;">Dear <em style="font-style:italic; color:var(--gold);">Ani</em></h3>
+        <p style="font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.5rem; font-weight:400;">The letter column</p>
+        <div class="gold-line"></div>
+        <p style="font-size:0.92rem; color:var(--ink-mid); line-height:1.7; margin-bottom:1.5rem;">Once a month, one real letter answered in full — published exclusively for paid subscribers. Every letter submitted is read personally. Those not chosen receive a private reply from Ani.</p>
+        <ul class="for-list">
+          <li>The monthly column — paid subscribers only</li>
+          <li>Submit your letter knowing it will be read</li>
+          <li>A private reply if yours isn't chosen</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card pillar-pale">
+        <p style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:400;">Pillar II</p>
+        <h3 style="font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--ink); margin-bottom:0.4rem; line-height:1.2;">The Unplug <em style="font-style:italic; color:var(--gold);">Hour</em></h3>
+        <p style="font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.5rem; font-weight:400;">Monthly live session</p>
+        <div class="gold-line"></div>
+        <p style="font-size:0.92rem; color:var(--ink-mid); line-height:1.7; margin-bottom:1.5rem;">One hour together, live on Zoom. A space to drop in, ask questions, and do the work in real time. Date announced to paid subscribers each month — check your inbox.</p>
+        <ul class="for-list">
+          <li>Live Zoom — once a month, paid only</li>
+          <li>Ask questions, do the work in real time</li>
+          <li>Date sent directly to your inbox</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <p style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; font-weight:400;">Pillar III</p>
+        <h3 style="font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--ink); margin-bottom:0.4rem; line-height:1.2;">Inner Work <em style="font-style:italic; color:var(--gold);">Practice</em></h3>
+        <p style="font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.5rem; font-weight:400;">From the private coaching room</p>
+        <div class="gold-line"></div>
+        <p style="font-size:0.92rem; color:var(--ink-mid); line-height:1.7; margin-bottom:1.5rem;">One writing prompt or reflective exercise drawn from Ani's private practice. Not content. An actual tool — sent once a month for you to sit with, not scroll past.</p>
+        <ul class="for-list">
+          <li>One prompt or exercise per month</li>
+          <li>Rooted in inner work, not self-help</li>
+          <li>Written to be used, not just read</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
   <div style="background:var(--gold-pale); border-top:0.5px solid var(--cream-dark); padding:5rem 2rem; text-align:center;">
@@ -1099,12 +1153,12 @@ footer a:hover { color: var(--gold); }
         <a href="https://anisabutt.substack.com" target="_blank" class="btn btn-gold">Subscribe — £8/month</a>
         <a href="https://anisabutt.substack.com" target="_blank" class="btn">Or £65/year</a>
       </div>
-      <p style="font-size:0.78rem; color:var(--ink-soft); margin-top:1.2rem;">Free subscribers get all essays and poems. Paid subscribers get Dear Ani.</p>
+      <p style="font-size:0.78rem; color:var(--ink-soft); margin-top:1.2rem;">Free subscribers get all essays and poems. Paid subscribers get Dear Ani, The Unplug Hour, and the monthly inner work practice.</p>
     </div>
   </div>
 
   <footer>
-    <p>Dear Ani &nbsp;·&nbsp; a column by Ani &nbsp;·&nbsp; <a href="https://anisabutt.substack.com" target="_blank">Read on Substack</a> &nbsp;·&nbsp; <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a></p>
+    <p>Dear Ani &nbsp;·&nbsp; The Unplug Hour &nbsp;·&nbsp; Inner Work Practice &nbsp;·&nbsp; <a href="https://anisabutt.substack.com" target="_blank">Substack</a> &nbsp;·&nbsp; <a href="https://instagram.com/unplugwithani" target="_blank">@unplugwithani</a></p>
   </footer>
 
 </div>
