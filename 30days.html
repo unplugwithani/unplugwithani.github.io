@@ -295,17 +295,23 @@ nav {
 /* WHAT YOU GET */
 .days-list {
   margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .days-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .day-item {
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 0.5px solid var(--cream-dark);
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border: 0.5px solid var(--cream-dark);
 }
 
 .day-num {
@@ -314,8 +320,6 @@ nav {
   letter-spacing: 0.1em;
   color: var(--gold);
   text-transform: uppercase;
-  min-width: 70px;
-  padding-top: 0.2rem;
 }
 
 .day-title {
@@ -441,7 +445,7 @@ footer {
   <a href="/" class="nav-name">Ani</a>
   <div class="nav-links">
     <a href="/" class="nav-link">← thisisani.com</a>
-    <a href="https://unplugwithani.gumroad.com/l/ubtkl" target="_blank" class="nav-cta">Get it now - £9.99 + VAT</a>
+    <a href="https://unplugwithani.gumroad.com/l/onkgw" target="_blank" class="nav-cta">Start listening - £27 + VAT</a>
   </div>
 </nav>
 
@@ -450,38 +454,50 @@ footer {
   <div class="hero-inner reveal">
     <span class="hero-tag">Audio Series · Available Now</span>
     <h1 class="hero-title">30 Days To<br><em>Unstuck.</em></h1>
-    <p class="hero-sub">Five minutes every morning. Thirty days. Your voice back.<br>This is not about doing more. It's about remembering who you are.</p>
-    <a href="https://unplugwithani.gumroad.com/l/ubtkl" target="_blank" class="btn-gold">Get instant access - £9.99 + VAT</a>
+    <p class="hero-sub">30 audios. 9 companion guides. 30 daily wallpapers.<br>Five minutes every morning. Thirty days. Come home to yourself.</p>
+    <a href="https://unplugwithani.gumroad.com/l/onkgw" target="_blank" class="btn-gold">Start listening - £27 + VAT</a>
   </div>
 </section>
+
+<!-- SENSITIVITY HOOK -->
+<div class="section section-border">
+  <div class="reveal" style="max-width:640px;">
+    <span class="section-label">Why this exists</span>
+    <h2 class="section-title">I found out late<br>that my sensitivity<br><em>was the gift.</em></h2>
+    <p style="color:var(--ink-soft); margin-bottom:1.2rem; line-height:1.8;">I spent years managing it. Dimming it. Performing a version of myself that was easier for everyone else to hold. And all the while, the thing I was managing - the sensitivity, the depth, the feeling of too much - was exactly what I had to offer.</p>
+    <p style="color:var(--ink-soft); margin-bottom:1.2rem; line-height:1.8;">I believe every creative person has a once-in-a-lifetime opportunity to leave a unique imprint on the world. And that does not necessarily mean a Netflix deal or a bestselling book. It could mean being a homemaker who makes her home feel like a sanctuary. It could mean being the teacher who impacts the one child who feels inadequate. The person who decides to show up fully on an ordinary day - because if you are going to sweep the kitchen floor, sweep it like it is a palace.</p>
+    <p style="color:var(--ink-soft); margin-bottom:0; line-height:1.8;">But we get in the way. We think: what is the point? No one is looking. There is too much competition. There is no room for someone like me.</p>
+    <p style="font-family:var(--serif); font-size:1.1rem; font-style:italic; color:var(--ink); margin-top:1.5rem; line-height:1.6;">30 Days to Unstuck is my answer to all of that.</p>
+  </div>
+</div>
 
 <!-- WHAT IS IT -->
 <div class="section section-border">
   <div class="reveal">
     <span class="section-label">What is this</span>
     <h2 class="section-title">A daily audio series<br>for the person who knows<br><em>they are meant for more.</em></h2>
-    <p style="color:var(--ink-soft); max-width:560px; margin-bottom:1rem;">You haven't lost yourself. You've just been buried under everything that got layered on top. 30 Days To Unstuck is your morning companion back.</p>
+    <p style="color:var(--ink-soft); max-width:560px; margin-bottom:1rem;">You have not lost yourself. You have just been buried under everything that got layered on top. 30 Days to Unstuck started as a daily audio series. It got bigger. Now it is three things working together: audios to hear each morning, companion guides to help you process what you are hearing in writing, and wallpapers to carry a word with you all day. Your morning companion back.</p>
   </div>
   <div class="what-grid">
     <div class="what-item reveal">
       <span class="what-number">30</span>
-      <p class="what-title">Days</p>
-      <p class="what-body">One audio a day for thirty days. Short. Intentional. Honest. Something you can return to each morning before the world gets loud.</p>
+      <p class="what-title">Audios</p>
+      <p class="what-body">One audio each morning. Five minutes. My voice, arriving before the noise does. Something honest to carry into your day.</p>
     </div>
     <div class="what-item reveal">
-      <span class="what-number">5</span>
-      <p class="what-title">Minutes</p>
-      <p class="what-body">Just five minutes. That's all it takes to check in with yourself, reset, and move through your day with more clarity and intention.</p>
+      <span class="what-number">9</span>
+      <p class="what-title">Guides</p>
+      <p class="what-body">Companion PDFs to help you process what you are hearing. Journal prompts and written exercises - because some things only land when they are on the page.</p>
     </div>
     <div class="what-item reveal">
-      <span class="what-number" style="font-size:2.5rem; letter-spacing:0.05em;">I</span>
-      <p class="what-title">Voice</p>
-      <p class="what-body">My voice. Personal, warm, unfiltered. Like a conversation with someone who truly sees you and refuses to let you stay small.</p>
+      <span class="what-number">30</span>
+      <p class="what-title">Wallpapers</p>
+      <p class="what-body">One for every day. Set it as your lock screen. Every time you reach for your phone, you see the word you are carrying. Let it do its work.</p>
     </div>
     <div class="what-item reveal">
       <span class="what-number">∞</span>
       <p class="what-title">Access</p>
-      <p class="what-body">Yours to keep, return to, and revisit. Because some days you'll need day one again. And that is not going backwards. That is wisdom.</p>
+      <p class="what-body">Download once, keep forever. Return to it whenever you need. Because some seasons you will need Day 1 again. That is not going backwards. That is wisdom.</p>
     </div>
   </div>
 </div>
@@ -502,11 +518,12 @@ footer {
     <h2 class="section-title">You recognise<br><em>yourself in this.</em></h2>
   </div>
   <ul class="for-list">
-    <li class="reveal">You know you are capable of more but something keeps getting in the way</li>
-    <li class="reveal">You have been saying "I just need to sort my head out" for longer than you care to admit</li>
-    <li class="reveal">You are exhausted from performing okay when you are not quite okay</li>
-    <li class="reveal">You have tried the apps, the journals, the courses and something still feels missing</li>
-    <li class="reveal">You are a creative, an entrepreneur, or someone who lives deeply and you need a space that honours that</li>
+    <li class="reveal">You are a writer, performer, artist, entrepreneur or creative - or you know you are meant to be one - and somewhere between the idea and the making, you stopped</li>
+    <li class="reveal">You are sensitive. You feel things deeply. For most of your life, you were told that was the problem. You are starting to wonder if it was actually the gift</li>
+    <li class="reveal">You have been saying "I just need to sort my head out first" for longer than you want to admit - and you are running out of excuses to give yourself</li>
+    <li class="reveal">You are exhausted from performing okay when you are not. You cope, you deliver, you show up - and then go home and wonder what it is all for</li>
+    <li class="reveal">You have tried the apps, the journals, the courses, the accountability groups. Something always feels like it is still missing</li>
+    <li class="reveal">You are not asking for your life to look completely different. You are asking to feel different inside the one you have. You want to come home to yourself</li>
     <li class="reveal">You are ready. You just needed someone to say - start here.</li>
   </ul>
 </div>
@@ -518,12 +535,12 @@ footer {
     <h2 class="section-title">You press play.<br><em>Five minutes later,<br>something shifts.</em></h2>
   </div>
   <div class="reveal">
-    <p style="color:var(--ink-mid); margin-bottom:1em;">Ani's voice arrives before the noise does. Before the to-do list. Before the performance of being okay. In five minutes, you are asked one honest question and given space to answer it - just to yourself.</p>
+    <p style="color:var(--ink-mid); margin-bottom:1em;">You press play. Five minutes later, something shifts. Do this every morning before the noise kicks in. Before the to-do list. Before putting on the mask. In five minutes, you are reminded of something you already knew - and given space to sit with it, just to yourself.</p>
     <p style="color:var(--ink-mid); margin-bottom:1em;">That is Day 1.</p>
     <p style="color:var(--ink-mid); margin-bottom:1em;">By Day 7, you will notice you are looking forward to it. By Day 14, you will wonder how you started your mornings without it. By Day 30, you will have thirty pieces of yourself you had forgotten were there.</p>
   </div>
   <div style="border-left: 1.5px solid var(--gold); padding: 0.5rem 0 0.5rem 1.5rem; margin: 2rem 0;">
-    <p style="font-family:var(--serif); font-size:clamp(1.1rem, 2.5vw, 1.3rem); font-style:italic; color:var(--ink); margin:0; line-height:1.5;">This is not about motivation. It is about remembering that you already know the answers - you just need five minutes of quiet to hear them.</p>
+    <p style="font-family:var(--serif); font-size:clamp(1.1rem, 2.5vw, 1.3rem); font-style:italic; color:var(--ink); margin:0; line-height:1.5;">This is not about motivation. It is about remembering that you already know the answers - you are just giving yourself permission to hear them.</p>
   </div>
 </div>
 
@@ -531,36 +548,29 @@ footer {
 <div class="section section-border">
   <div class="reveal">
     <span class="section-label">What to expect</span>
-    <h2 class="section-title">Thirty days.<br><em>One conversation at a time.</em></h2>
-    <p style="color:var(--ink-soft); max-width:520px;">Each audio drops you into a different layer of yourself. Here's a glimpse of the journey:</p>
+    <h2 class="section-title">Three phases.<br><em>Thirty days. One conversation at a time.</em></h2>
+    <p style="color:var(--ink-soft); max-width:520px;">Designed with intention. Each phase builds on the last.</p>
   </div>
   <div class="days-list">
     <div class="day-item reveal">
-      <span class="day-num">Week 1</span>
+      <span class="day-num">Days 1 to 10</span>
       <div>
-        <p class="day-title">Permission</p>
-        <p class="day-body">We start by giving you back the one thing you've been waiting for someone else to give you. Permission to feel it, say it, and begin.</p>
+        <p class="day-title">Unblock</p>
+        <p class="day-body">Name what stopped you. Identify the fear, the silence, the story you have been telling yourself and begin to loosen its grip.</p>
       </div>
     </div>
     <div class="day-item reveal">
-      <span class="day-num">Week 2</span>
+      <span class="day-num">Days 11 to 20</span>
       <div>
-        <p class="day-title">The Story You've Been Telling</p>
-        <p class="day-body">What are you carrying that isn't even yours? We look at the narratives quietly running your life - and begin to rewrite them.</p>
+        <p class="day-title">Believe</p>
+        <p class="day-body">Rebuild who you are. Reconstruct the self-belief that went quiet. Your story, your voice, your right to want the things you want.</p>
       </div>
     </div>
     <div class="day-item reveal">
-      <span class="day-num">Week 3</span>
+      <span class="day-num">Days 21 to 30</span>
       <div>
-        <p class="day-title">The Body Knows</p>
-        <p class="day-body">Your nervous system has been trying to tell you something. This week we listen - and learn to regulate, root, and return to safety.</p>
-      </div>
-    </div>
-    <div class="day-item reveal">
-      <span class="day-num">Week 4</span>
-      <div>
-        <p class="day-title">Becoming</p>
-        <p class="day-body">Not who you were. Not who you think you should be. Who you actually are when the noise stops. We end here - and this is where everything begins.</p>
+        <p class="day-title">Move</p>
+        <p class="day-body">Act from the inside out. Show up consistently, imperfectly, and on purpose. This is where everything you have rebuilt starts to become real.</p>
       </div>
     </div>
   </div>
@@ -571,9 +581,9 @@ footer {
   <div class="waitlist-inner">
     <span class="section-label">Ready to begin</span>
     <h2 class="section-title" style="margin-bottom:1rem;">30 days.<br><em>Start today.</em></h2>
-    <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:0.5rem;">30 audio episodes. Five minutes each morning. Yours to keep forever.</p>
-    <p style="font-family:var(--serif); font-size:2.5rem; color:var(--ink); margin:1rem 0;">£9.99 <span style="font-size:1rem; color:var(--ink-soft);">+ VAT</span></p>
-    <a href="https://unplugwithani.gumroad.com/l/ubtkl" target="_blank" class="btn-gold" style="display:inline-block; margin-bottom:0.75rem;">Get instant access</a>
+    <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:0.5rem;">30 audios · 9 companion guides · 30 wallpapers. Yours to keep forever.</p>
+    <p style="font-family:var(--serif); font-size:2.5rem; color:var(--ink); margin:1rem 0;">£27 <span style="font-size:1rem; color:var(--ink-soft);">+ VAT</span></p>
+    <a href="https://unplugwithani.gumroad.com/l/onkgw" target="_blank" class="btn-gold" style="display:inline-block; margin-bottom:0.75rem;">Start listening</a>
     <p style="font-size:0.72rem; color:var(--ink-soft); letter-spacing:0.06em;">Secure checkout via Gumroad. Instant download. 🤍</p>
   </div>
 </div>
